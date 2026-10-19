@@ -1,0 +1,108 @@
+header{
+  background: url(../images/visk-bg.png) no-repeat center 0;
+  height:770px;
+  h1{
+    font-size: 55px;
+    padding:24px 0;
+    line-height: 65px;
+  }
+  .textlisting{
+    padding-left: 20px;
+    li{
+      font-size: 18px;
+      color: var(--black);
+     line-height: 27px;
+     list-style: disc;
+     padding-bottom:4px;
+     font-weight: 300;
+    }
+  }
+  .header-inner{
+    display: var(--df);
+    padding:30px;
+    max-width: 1300px;
+    width:100%;
+    margin:0 auto;
+  }
+  .blutpoint{
+    display:var(--df);
+    justify-content: flex-end;
+    flex-direction: column;
+    padding:0 0 0 80px;
+    h2{
+      font-size: 20px;
+      font-weight: normal;
+      border-bottom: 1px solid var(--black);
+      margin-bottom: 40px;
+      padding-left: 50px;
+      text-align: right;
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        bottom:-2px;
+        left: 0;
+        width:4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--black);
+      }
+      &::after{
+        content: '';
+        position: absolute;
+        bottom:-2px;
+        right:0;
+        width:4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--black);
+      }
+    }
+  }
+  .leftbox{
+    width:500px;
+  }
+}
+.getfreebtn{
+  width:409px;
+  height: 54px;
+  border-radius: 30px;
+  border:1px solid #9ACA3C;
+  font-size: 24px;
+  background-color:var(--white);
+  font-weight: 700;
+  overflow: hidden;
+  display: inline-block;
+  display: flex;
+  //justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 0 3px rgb(00, 00, 00, 0.4);
+  margin-top:30px;
+  text-align: center;
+  background-image: linear-gradient(to right, #fff 50%,#9aca3c 50%);
+  text-align: center;
+  position: relative;
+  align-items: center;
+  padding-left: 16px;
+  .inrtxt{
+    font-size: 24px;
+    font-weight: normal;
+    width:50%;
+    font-weight: 700;
+    padding:7px 0 0 0;
+    box-sizing: border-box;
+    span{
+      font-size: 16px;
+      font-weight:400;
+    }
+  }
+  strong{
+    color: var(--white);
+    background-color: #9ACA3C;
+    border-radius: 0 ;
+    width:50%;
+    padding:14px 16px;
+    box-sizing: border-box;
+  }
+}
+

@@ -1,0 +1,62 @@
+h1,h2,h3,h4,h5,h6,div,ul,li,form,p,section,article,aside,figure,body, header, nav, blockquote{margin:0; padding:0;box-sizing: border-box}
+:root {
+  --dgray:#333;
+  --lgray: #767676;
+  --red: #EB5959;
+  --blue:#0094D9;
+  --white: #fff;
+  --black: #000;
+  --df: flex;
+  --jcsb: space-between;
+  --fs18: 18px;
+  --fs16: 16px;
+  --lh16: 16px;
+  --lh32:32px;
+  --center:center;
+}
+ul,li{
+  list-style: none;
+}
+.mt40{
+  margin-top:40px;
+}
+.mt32{
+  margin-top:32px;
+}
+.pt40{
+  padding-top:40px;
+}
+a{
+  color:#000;
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+    color:initial;
+  }
+}
+.df{
+  display: var(--df);
+}
+.prelative{
+  position: relative;
+}
+.dfjcsb{
+  display: var(--df);
+  justify-content: space-between;
+}
+body{
+  color: #000;
+  font-size: 14px;
+  width:100%;
+  font-family: 'Nokora', sans-serif;
+}
+.outercontainer{
+    max-width: 1300px;
+    width:100%;
+    margin: 0 auto;
+  }
+  .container{
+    max-width: 1050px;
+    width:100%;
+    margin:0 auto;
+  }

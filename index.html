@@ -2,149 +2,1191 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visk - Simplifying Personal Care For Everyone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>VISK — Simplifying Personal Care for Everyone</title>
+    <meta name="description" content="VISK is a natural, skin-friendly personal hygiene spray suitable for all genders. pH balanced, eco-friendly, no artificial fragrances.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nokora:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/header-footer.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1K76HTY1SN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap">
+    <style>
+    /* VISK Ultraviolet — single-page e-commerce landing */
+    :root {
+      --teal: #3D8B8B;
+      --teal-deep: #2D6B6B;
+      --violet: #C77DFF;
+      --ink: #3A3A4A;
+      --lilac: #F3EEFF;
+      --mist: #E0F0F0;
+      --surface: #FAFAFA;
+      --white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', 'Georgia', serif;
+      --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+      --radius: 8px;
+      --radius-lg: 16px;
+      color-scheme: light;
+    }
 
-  gtag('config', 'G-1K76HTY1SN');
-</script>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--teal); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--violet); }
+
+    /* ── Utility ── */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      color: var(--ink);
+      text-wrap: balance;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto;
+      color: #555;
+    }
+
+    .inner {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    /* ── Parallax sections ── */
+    .parallax-band {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      inset: -60px 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      will-change: transform;
+      z-index: 0;
+    }
+
+    .parallax-band > .inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Navigation ── */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(61,139,139,0.1);
+      transition: box-shadow 0.3s;
+    }
+
+    .site-nav.scrolled { box-shadow: 0 2px 20px rgba(58,58,74,0.08); }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+    }
+
+    .nav-logo img { height: 36px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--teal-deep); color: var(--white) !important; }
+
+    /* Mobile menu toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-toggle svg { display: block; }
+
+    /* ── Hero ── */
+    .hero {
+      background: url('images/visk-bg.png') no-repeat center 0;
+      height: 770px;
+      position: relative;
+    }
+
+    .hero-inner {
+      display: flex;
+      padding: 30px;
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      padding-top: 100px;
+    }
+
+    .hero-left {
+      width: 500px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: 55px;
+      font-weight: 600;
+      line-height: 65px;
+      color: var(--ink);
+      text-wrap: balance;
+      padding: 24px 0;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-list {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .hero-list li {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--ink);
+      line-height: 27px;
+      padding-bottom: 4px;
+      font-weight: 300;
+    }
+
+    .hero-bullets {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      padding: 0 0 0 80px;
+    }
+
+    .hero-bullet {
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 400;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 40px;
+      padding-left: 50px;
+      text-align: right;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .hero-bullet::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background-color: var(--ink);
+    }
+
+    .hero-bullet::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background-color: var(--ink);
+    }
+
+    .nav-logo-hero img { width: auto; height: 48px; }
+
+    /* ── CTA Buttons ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--teal);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 40px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(61,139,139,0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-deep);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(61,139,139,0.3);
+    }
+
+    .btn-primary .price-tag {
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ink);
+      padding: 14px 28px;
+      border: 2px solid var(--ink);
+      border-radius: 40px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* ── Features / Why VISK ── */
+    .features-section {
+      padding: 80px 0;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: var(--mist);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(61,139,139,0.1);
+    }
+
+    .feature-icon {
+      width: 56px; height: 56px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* ── Uses section ── */
+    .uses-section {
+      padding: 80px 0;
+      background: var(--lilac);
+      position: relative;
+    }
+
+    .uses-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 40px;
+      align-items: start;
+    }
+
+    .uses-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: sticky;
+      top: 100px;
+    }
+
+    .uses-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .uses-list { list-style: none; }
+
+    .uses-list li {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(61,139,139,0.1);
+      align-items: flex-start;
+    }
+
+    .uses-list li:last-child { border-bottom: none; }
+
+    .use-marker {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .uses-list strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .uses-list span {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* ── Ingredients parallax band ── */
+    .ingredients-section {
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ingredients-section .parallax-bg {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-deep) 100%);
+    }
+
+    .ingredients-section .inner { position: relative; z-index: 1; }
+
+    .ingredients-section .section-label { color: rgba(255,255,255,0.7); }
+    .ingredients-section .section-title { color: var(--white); }
+
+    .ingredients-text {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      color: rgba(255,255,255,0.85);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .ingredients-text p { margin-bottom: 20px; }
+
+    .ingredients-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 40px;
+      padding: 10px 24px;
+      margin-top: 12px;
+      font-weight: 600;
+      color: var(--white);
+      font-size: 15px;
+    }
+
+    /* ── Pricing ── */
+    .pricing-section {
+      padding: 80px 0;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      max-width: 840px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pricing-card {
+      background: var(--surface);
+      border: 2px solid transparent;
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--teal);
+      background: var(--mist);
+      transform: scale(1.04);
+    }
+
+    .pricing-card.featured::before {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--violet);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 16px;
+      border-radius: 20px;
+    }
+
+    .pricing-card .bottle-img {
+      width: 120px;
+      height: 160px;
+      margin: 0 auto 16px;
+      object-fit: contain;
+    }
+
+    .pricing-card .bottle-placeholder {
+      width: 120px;
+      height: 160px;
+      margin: 0 auto 16px;
+      background: var(--mist);
+      border: 2px dashed rgba(61,139,139,0.3);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .pricing-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .pricing-card .card-desc {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .pricing-card .price {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .pricing-card .price span {
+      font-size: 16px;
+      font-weight: 400;
+      color: #888;
+    }
+
+    .pricing-card .price-note {
+      font-size: 12px;
+      color: #999;
+      margin-top: 6px;
+      margin-bottom: 24px;
+    }
+
+    .pricing-card .btn-primary {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+      font-size: 15px;
+    }
+
+    /* ── B2B Contact ── */
+    .b2b-section {
+      padding: 40px 0;
+      background: var(--lilac);
+      text-align: center;
+    }
+
+    .b2b-section p {
+      font-size: 16px;
+      color: var(--ink);
+    }
+
+    .b2b-section a {
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    /* ── Policies ── */
+    .policies-section {
+      padding: 60px 0;
+      background: var(--mist);
+    }
+
+    .policies-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .policy-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .policy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .policy-header:hover { background: var(--lilac); }
+
+    .policy-header h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .policy-header svg {
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .policy-card.open .policy-header svg {
+      transform: rotate(180deg);
+    }
+
+    .policy-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .policy-body-inner {
+      padding: 0 24px 24px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    .policy-body-inner h4 {
+      font-weight: 600;
+      color: var(--ink);
+      margin: 16px 0 6px;
+      font-size: 14px;
+    }
+
+    .policy-body-inner h4:first-child { margin-top: 0; }
+
+    .policy-body-inner p { margin-bottom: 10px; }
+
+    .policy-body-inner ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .policy-body-inner li { margin-bottom: 4px; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.7);
+      padding: 48px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li {
+      font-size: 14px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { height: auto; background: url('images/visk-mbg.png') no-repeat center 0; background-size: 100%; }
+      .hero-inner { flex-direction: column; padding: 24px; }
+      .hero-left { width: 100%; order: 2; padding-top: 80px; }
+      .hero-bullets { order: 1; padding: 282px 0 0 20px; width: 150px; }
+      .hero-bullet { font-size: 14px; padding-left: 0; }
+      .hero-headline { font-size: 36px; line-height: 46px; }
+      .hero-list li { font-size: 16px; }
+      .cta-group { justify-content: center; }
+      .features-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .uses-grid { grid-template-columns: 1fr; }
+      .uses-image { position: static; }
+      .pricing-cards { grid-template-columns: 1fr; max-width: 340px; }
+      .pricing-card.featured { transform: none; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 32px; }
+      .btn-primary { width: 100%; justify-content: center; }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .parallax-bg { position: absolute; transform: none !important; }
+    }
+    </style>
 </head>
 <body>
-        <header>
-            <div class="header-inner">
-                <div class="leftbox">
-                <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
-                <h1>Simplifying Personal Care</h1>
-                <ul class="textlisting">
-                    <li>A Personal Hygiene Spray Suitable for All Genders</li>
-                    <li>Say goodbye to unpleasant odours with VISK, a skin-friendly spray that eliminates unwanted scents without relying on artificial fragrances.</li>
-                    <li>VISK is powerful enough to neutralise the strongest smells and eliminate bacteria within seconds. Experience long-lasting freshness with every spray, and use as many times as needed – it's completely safe!</li>
-                </ul>
-                <a href="https://show.forms.app/viskskintech/product-research-survey-1" class="getfreebtn"><div class="inrtxt">INR 199 <span>/30 ml</span></div> <strong>Get it Free!</strong></a>
-                </div>
-                <div class="blutpoint">
-                    <h2>Kills Bacteria</h2>
-                    <h2>Hypoallergenic</h2>
-                    <h2>Covers Odor</h2>
-                </div>
-            </div>
-        </header>
-    <section class="midbox">
-        <div class="midinner">
-        <h2 class="title">Why is VISK so special?</h2>
-        <p>VISK, our personal hygiene solution, offers a range of environmentally friendly and consumer-friendly disinfectants. These products are non-toxic, with a neutral pH, ensuring no health risks and eliminating the need for rinsing after use.</p>
-        <ul class="vspaciallisting">
-            <li>
-                <p><img src="images/blutimg.png" alt="">100% Natural </p>
-                <p><img src="images/blutimg.png" alt="">Skin Friendly</p>
-                <p><img src="images/blutimg.png" alt="">Kills Bacteria</p>
-            </li>
-            <li>
-                <p><img src="images/blutimg.png" alt="">Removes odor </p>
-                <p><img src="images/blutimg.png" alt="">Dermatologically tested</p>
-                <p><img src="images/blutimg.png" alt="">PH Neutral</p>
-            </li>
-            <li>
-                <p><img src="images/blutimg.png" alt="">No Health Risk </p>
-                <p><img src="images/blutimg.png" alt="">Non Toxic</p>
-                <p><img src="images/blutimg.png" alt="">Eco Friendly</p>
-            </li>
-        </ul>
-        <div class="btnbox">
-            <a href="https://show.forms.app/viskskintech/product-research-survey-1" class="getfreebtn"><div class="inrtxt">INR 199 <span>/30 ml</span></div> <strong>Get it Free!</strong></a>
-        </div>
-        </div>
-    </section>
-    <section class="safescane mt32">
-        <div class="midinner ">
-        <h2 class="title">Skin Safe Uses of Visk</h2>
-        <p>Use VISK at home or on the go! VISK can be used for multiple skin problems, here a few.</p>
-        <div class="df">
-            <figure class="lftimg">
-                <img src="images/img02.png" alt="">
-            </figure>
-            <div>
-            <ul class="contentbox">
-                <li><strong>Underarm Odor Control:</strong>Spray VISK to neutralize underarm odors.</li>
-                <li><strong>Body Odor Prevention:</strong>Apply VISK for all-over body freshness.</li>
-                <li><strong>After Gym or Workout:</strong>Refresh and disinfect post-exercise with VISK.</li>
 
-                <li><strong>Between Skin Folds:</strong>Disinfect and control odors in skin folds.</li>
-                <li><strong>Chest and Neck Refresh:</strong>Instantly refresh the chest and neck with VISK.</li>
-                <li><strong>Between Fingers and Toes:</strong>Prevent moisture-related issues in folds.</li>
-                <li><strong>Groin Area:</strong>Control sweat odors and maintain freshness.</li>
-                <li><strong>Back and Shoulder Refresher:</strong>Spray VISK for a quick back and shoulder refresh.</li>
-                <li><strong>Knee and Elbow Folds:</strong>Apply VISK in folds for disinfection.</li>
-                <li><strong>Post-Intimacy Freshness:</strong>Use VISK after intimacy for freshness.</li>
-                <li><strong>Facial Mask Refresh:</strong>Before and after using masks, use VISK for a clean feeling.</li>
-                <li><strong>Mouthwash Alternative: </strong>Use VISK for quick oral disinfection.</li>
+<!-- Navigation -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="images/logo.png" alt="VISK — Instant Magic!"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Why VISK</a></li>
+      <li><a href="#uses">How to Use</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#policies">Policies</a></li>
+      <li><a href="#pricing" class="nav-cta">Buy Now</a></li>
+    </ul>
+  </div>
+</nav>
 
-                <li><strong>Post-Meals Freshen Up:</strong>Spray VISK in the mouth after meals.</li>
-                <li><strong>Prevent Bad Breath:</strong>Control and prevent bad breath with VISK.</li>
-                <li><strong>Morning Breath Buster:</strong>Freshen up the mouth in the morning with VISK.</li>
-                <li><strong>Pre and Post-Oral Intimacy:</strong>Use VISK for oral hygiene before and after intimate moments.</li>
-                <li><strong>Teeth and Gum Disinfection:</strong>Apply VISK on teeth and gums for quick disinfection.</li>
-                <li><strong>Smoker's Companion: </strong>Freshen up the mouth after smoking with VISK.</li>
-                <li><strong>Coffee or Tea Neutralizer:</strong>Neutralize odors after consuming coffee or tea with VISK.</li>
-                <li><strong>On-the-Go Oral Care:</strong>Carry VISK for convenient on-the-go oral care</li>
-                <li><strong>Baby Diaper Change:</strong>Disinfect baby's skin before a diaper change with VISK.</li>
-
-                <li><strong>For Seniors Disinfection:</strong>Use VISK on seniors' skin for effective disinfection.</li>
-                <li><strong>Disinfect Wounds:</strong>Apply VISK to disinfect minor wounds and cuts.</li>
-                <li><strong>Onion Garlic Smell:</strong>Spray VISK on your hands after chopping onion or garlic to remove the odor.</li>
-            </ul>
-            <div class="getfbtnbg">
-                <a href="https://show.forms.app/viskskintech/product-research-survey-1" class="getfreebtn"><div class="inrtxt">INR 199 <span>/30 ml</span></div> <strong>Get it Free!</strong></a>
-            </div>
-        </div>
-        </div>
+<!-- Hero -->
+<header class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <a href="#" class="nav-logo-hero"><img src="images/logo.png" alt="VISK"></a>
+      <h1 class="hero-headline">Simplifying <em>Personal Care</em></h1>
+      <ul class="hero-list">
+        <li>A Personal Hygiene Spray Suitable for All Genders</li>
+        <li>Say goodbye to unpleasant odours with VISK, a skin-friendly spray that keeps you fresh without relying on artificial fragrances.</li>
+        <li>VISK is gentle yet effective — experience long-lasting freshness with every spray, and use as many times as needed. It's completely safe!</li>
+      </ul>
+      <div class="cta-group" style="margin-top: 30px;">
+        <a href="#pricing" class="btn-primary">Buy Now <span class="price-tag">From ₹499</span></a>
+      </div>
     </div>
-    </section>
-    <section class="container viskmadebox pt40">
-        <h2 class="title">What is VISK made of?</h2>
-        <p>VISK is formulated as a Naturally Oxidized Anolyte solution based on Hypochlorous Acid (HOCl) and other oxidizing radicals. This powerful and natural disinfectant acts rapidly and has a prolonged effect. Its creation involves specific electrochemical conditions using water, salt (NaCl), and electricity, resulting in a solution with a neutral pH and high Oxidation-Reduction Potential (ORP). This potent formula targets various microorganisms such as bacteria, viruses, fungi, spores, and molds.
-            The mechanism of action involves irreversible damage to the essential functions of microorganisms at the electron transmission level. This process effectively eliminates a broad spectrum of microorganisms without harming human tissues or other multi-cellular organisms. Importantly, VISK rapidly degrades into salt and water under environmental conditions, leaving no ecological footprint.
-            VISK is proudly crafted from 100% natural ingredients, emphasizing our commitment to wellness and sustainability.
-            </p>
-            <div href="#" class="btnbox">
-                <a href="https://show.forms.app/viskskintech/product-research-survey-1" class="getfreebtn"><div class="inrtxt">INR 199 <span>/30 ml</span></div> <strong>Get it Free!</strong></a>
-            </div>
-    </section>
-    <section class="contactbox mt40">
-        <strong>For Wholesale/ Distribution/ B2B Solutions Contact:</strong><br>
-        Sunali Aggarwal<br>
-        <a href="sunali@beonsystems.com">sunali@beonsystems.com</a>
-    </section>
-    <section class="graphbox mt32">
-        <figure><img src="images/graph.png" alt=""></figure>
-        <div href="#" class="btnbox">
-            <a href="https://show.forms.app/viskskintech/product-research-survey-1" class="getfreebtn"><div class="inrtxt">INR 199 <span>/30 ml</span></div> <strong>Get it Free!</strong></a>
+    <div class="hero-bullets">
+      <div class="hero-bullet">Hypoallergenic</div>
+      <div class="hero-bullet">Covers Odour</div>
+      <div class="hero-bullet">pH Balanced</div>
+    </div>
+  </div>
+</header>
+
+<!-- Why VISK -->
+<section class="features-section" id="features">
+  <div class="inner">
+    <div class="section-label">Why VISK</div>
+    <h2 class="section-title">Personal freshness, reimagined</h2>
+    <p class="section-body">VISK is a personal hygiene spray suitable for all genders. It neutralises unwanted scents without relying on artificial fragrances, so you feel clean and confident — naturally.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" fill="white" opacity="0.3"/><path d="M12 8v4l3 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-    </section>
-    <footer class="mt32">
-        <div class="container">
-            <div class="leftbox">
-                <strong>VISK is manufactured by:</strong> 
-                TRISTART PHARMACEUTICALS PVT.LTD.
-                Plot.no. 66 Phase 2 Industrial Area
-                Panchkula Haryana 134113
-            </div>
-            <div class="rightbox">
-               <strong>For Wholesale/ Distribution/ B2B Solutions Contact:</strong> 
-                Sunali Aggarwal<br>
-                <a href="sunali@beonsystems.com">sunali@beonsystems.com</a> 
-            </div>
+        <h3>Instant Freshness</h3>
+        <p>Clean in seconds, comfortable for hours. Use as many times as needed throughout the day — completely safe for everyday use.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="white" opacity="0.3"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="white" stroke-width="1.5"/></svg>
         </div>
-    </footer>
+        <h3>Gentle on Skin</h3>
+        <p>Formulated with a neutral pH of 5.5, VISK is safe enough for the most sensitive skin. Dermatologically considered, non-toxic, and non-irritating.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" fill="white" opacity="0.3"/><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" stroke="white" stroke-width="1.5"/><path d="M12 22V12M4 7l8 5 8-5" stroke="white" stroke-width="1.5"/></svg>
+        </div>
+        <h3>All Natural</h3>
+        <p>Made from water, salt, and a gentle electrolysis process. VISK degrades into salt and water after use — zero ecological footprint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How to Use / Everyday Uses -->
+<section class="uses-section parallax-band" id="uses">
+  <div class="inner">
+    <div class="section-label">Everyday Freshness</div>
+    <h2 class="section-title">Use it anywhere, anytime</h2>
+    <p class="section-body" style="margin-bottom: 8px;">A quick spray keeps you feeling fresh throughout the day — at home, at work, or on the go.</p>
+    <div class="uses-grid">
+      <div class="uses-image">
+        <img src="images/img01.png" alt="Active people staying fresh">
+      </div>
+      <div>
+        <ul class="uses-list">
+          <li>
+            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><strong>Underarm Freshness</strong><span>Neutralise underarm odours naturally, without aluminium or artificial fragrances.</span></div>
+          </li>
+          <li>
+            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><strong>Post-Workout Refresh</strong><span>A quick spray after exercise for instant freshness, wherever you are.</span></div>
+          </li>
+          <li>
+            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><strong>All-Over Body Freshness</strong><span>Use on neck, chest, back, and anywhere else you need a quick refresh.</span></div>
+          </li>
+          <li>
+            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><strong>Intimate Area Care</strong><span>Gentle enough for your most sensitive areas. Maintain comfort and freshness naturally.</span></div>
+          </li>
+          <li>
+            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><strong>Hand Freshness</strong><span>Remove cooking odours from your hands after handling onion, garlic, or fish.</span></div>
+          </li>
+          <li>
+            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><strong>Elderly Care</strong><span>Gentle personal freshness for seniors — maintaining dignity and comfort every day.</span></div>
+          </li>
+          <li>
+            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><strong>On-the-Go Freshness</strong><span>Compact enough to carry everywhere. A few sprays and you're ready for anything.</span></div>
+          </li>
+        </ul>
+        <div style="margin-top: 32px;">
+          <a href="#pricing" class="btn-primary">Buy VISK Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What's Inside — parallax teal band -->
+<section class="ingredients-section parallax-band" id="ingredients">
+  <div class="parallax-bg" style="background: linear-gradient(135deg, #3D8B8B, #2D6B6B);"></div>
+  <div class="inner" style="text-align: center;">
+    <div class="section-label">What's Inside</div>
+    <h2 class="section-title">Simple. Natural. Effective.</h2>
+    <div class="ingredients-text">
+      <p>VISK is formulated from just three ingredients: purified water, salt, and a gentle electrolysis process. The result is a naturally oxidised solution that's pH-balanced at 5.5 — matching your skin's own pH.</p>
+      <p>After use, VISK simply breaks down into salt and water, leaving no residue and no ecological footprint. It's personal care that's kind to you and to the planet.</p>
+      <div class="ingredients-highlight">
+        <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9s3.36 7.5 7.5 7.5 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5zM9 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="white" opacity="0.4"/><path d="M8 5.5h2v5H8zM8 12h2v1.5H8z" fill="white"/></svg>
+        100% Natural &nbsp;·&nbsp; pH 5.5 &nbsp;·&nbsp; Non-Toxic &nbsp;·&nbsp; Eco-Friendly
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section parallax-band" id="pricing">
+ <div class="inner">
+    <div class="section-label">Choose Your Pack</div>
+    <h2 class="section-title">Fresh starts at ₹499</h2>
+    <p class="section-body">All prices inclusive of GST. Free shipping across India on all orders.</p>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <img src="images/bottle.png" alt="VISK 100ml bottle" class="bottle-img">
+        <h3>Single</h3>
+        <p class="card-desc">100 ml spray bottle</p>
+        <div class="price">₹499</div>
+        <p class="price-note">MRP incl. of all taxes</p>
+        <a href="#" class="btn-primary">Buy Now</a>
+      </div>
+      <div class="pricing-card featured">
+        <img src="images/2bottle.png" alt="VISK Duo Pack" class="bottle-img">
+        <h3>Duo Pack</h3>
+        <p class="card-desc">2 × 100 ml bottles</p>
+        <div class="price">₹699</div>
+        <p class="price-note">Save ₹299 · MRP incl. of all taxes</p>
+        <a href="#" class="btn-primary">Buy Now</a>
+      </div>
+      <div class="pricing-card">
+        <img src="images/3bottle.png" alt="VISK Family Pack" class="bottle-img">
+        <h3>Family Pack</h3>
+        <p class="card-desc">2 + 1 Free · 3 × 100 ml</p>
+        <div class="price">₹999</div>
+        <p class="price-note">Best value · MRP incl. of all taxes</p>
+        <a href="#" class="btn-primary">Buy Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B2B -->
+<section class="b2b-section">
+  <div class="inner">
+    <p>For wholesale, distribution, or institutional orders: <a href="mailto:sunali@visk.in">sunali@visk.in</a></p>
+  </div>
+</section>
+
+<!-- Policies -->
+<section class="policies-section" id="policies">
+  <div class="inner">
+    <div class="section-label">Store Policies</div>
+    <h2 class="section-title" style="font-size: clamp(24px, 4vw, 36px);">Everything you need to know</h2>
+    <div class="policies-grid">
+
+      <div class="policy-card">
+        <div class="policy-header" onclick="togglePolicy(this)">
+          <h3>Shipping &amp; Delivery</h3>
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="policy-body">
+          <div class="policy-body-inner">
+            <h4>Dispatch &amp; Delivery</h4>
+            <p>All orders are dispatched within 2 business days of order confirmation. Standard delivery takes 5–7 business days across India. We ship via reputed courier partners with tracking.</p>
+            <h4>Shipping Charges</h4>
+            <p>Free standard shipping on all orders across India. Express delivery options may be available at checkout for select pin codes at an additional charge.</p>
+            <h4>Order Tracking</h4>
+            <p>Once your order is dispatched, you will receive an email and/or SMS with your tracking details. You can track your shipment using the link provided.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="policy-card">
+        <div class="policy-header" onclick="togglePolicy(this)">
+          <h3>Returns &amp; Refunds</h3>
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="policy-body">
+          <div class="policy-body-inner">
+            <h4>Return Window</h4>
+            <p>We accept returns within 7 days of delivery for unused and unopened products in their original packaging. Opened or used products cannot be returned for hygiene reasons.</p>
+            <h4>How to Initiate a Return</h4>
+            <p>Email us at sunali@visk.in with your order number and reason for return. We will provide a return shipping label or arrange pickup within 3 business days.</p>
+            <h4>Refund Process</h4>
+            <p>Refunds are processed within 7–10 business days after we receive and inspect the returned product. The refund will be credited to your original payment method.</p>
+            <h4>Damaged or Defective Products</h4>
+            <p>If you receive a damaged or defective product, please contact us within 48 hours of delivery with photographs. We will arrange a free replacement or full refund.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="policy-card">
+        <div class="policy-header" onclick="togglePolicy(this)">
+          <h3>Privacy Policy</h3>
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="policy-body">
+          <div class="policy-body-inner">
+            <h4>Information We Collect</h4>
+            <p>When you place an order, we collect your name, email address, phone number, shipping address, and payment information necessary to process your order.</p>
+            <h4>How We Use Your Information</h4>
+            <ul>
+              <li>Processing and fulfilling your orders</li>
+              <li>Sending order confirmations and shipping updates</li>
+              <li>Responding to your enquiries and support requests</li>
+              <li>Improving our products and services</li>
+            </ul>
+            <h4>Data Protection</h4>
+            <p>We do not sell, trade, or share your personal information with third parties except as necessary to fulfil your order (e.g., shipping partners, payment processors). All transactions are processed through secure, PCI-compliant payment gateways.</p>
+            <h4>Your Rights</h4>
+            <p>You may request access to, correction of, or deletion of your personal data by contacting us at sunali@visk.in.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="policy-card">
+        <div class="policy-header" onclick="togglePolicy(this)">
+          <h3>Terms &amp; Conditions</h3>
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="policy-body">
+          <div class="policy-body-inner">
+            <h4>Product Information</h4>
+            <p>VISK is a personal hygiene spray for external use only. It is not a medicine, drug, or pharmaceutical product. It is classified as a liquid antiseptic for household use. VISK is not intended to diagnose, treat, cure, or prevent any disease.</p>
+            <h4>Pricing</h4>
+            <p>All prices are listed in Indian Rupees (INR) and include applicable GST. We reserve the right to modify prices at any time without prior notice.</p>
+            <h4>Payment</h4>
+            <p>We accept payments via UPI, net banking, credit cards, debit cards, and wallets through our secure payment gateway. Orders are confirmed only upon successful payment.</p>
+            <h4>Limitation of Liability</h4>
+            <p>VISK and Beon Des Tech Systems Pvt. Ltd. shall not be liable for any indirect, incidental, or consequential damages arising from the use of our products. Our total liability is limited to the purchase price of the product.</p>
+            <h4>Governing Law</h4>
+            <p>These terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in Chandigarh.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="VISK">
+        <p>Personal hygiene, simplified. A product by Beon Des Tech Systems Pvt. Ltd.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Manufactured By</h4>
+        <ul>
+          <li>Tristar Pharmaceuticals Pvt. Ltd.</li>
+          <li>Plot No. 66, Phase 2</li>
+          <li>Industrial Area, Panchkula</li>
+          <li>Haryana 134113</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Beon Des Tech Systems Pvt. Ltd.</li>
+          <li>sunali@visk.in</li>
+        
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 VISK &middot; Marketed by Beon Des Tech Systems Pvt. Ltd.</span>
+      <span>Manufactured by Tristar Pharmaceuticals Pvt. Ltd., Panchkula</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Parallax scroll effect
+(function() {
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  var bgs = document.querySelectorAll('.parallax-bg');
+  var ticking = false;
+
+  function updateParallax() {
+    var scrollY = window.scrollY;
+    bgs.forEach(function(bg) {
+      var section = bg.parentElement;
+      var rect = section.getBoundingClientRect();
+      var sectionTop = rect.top + scrollY;
+      var offset = (scrollY - sectionTop) * 0.3;
+      bg.style.transform = 'translateY(' + offset + 'px)';
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// Nav scroll shadow
+(function() {
+  var nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
+
+// Mobile nav toggle
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle && links) {
+    toggle.addEventListener('click', function() {
+      if (links.style.display === 'flex') {
+        links.style.display = 'none';
+      } else {
+        links.style.display = 'flex';
+        links.style.flexDirection = 'column';
+        links.style.position = 'absolute';
+        links.style.top = '100%';
+        links.style.left = '0';
+        links.style.right = '0';
+        links.style.background = 'rgba(255,255,255,0.98)';
+        links.style.padding = '16px';
+        links.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+      }
+    });
+  }
+})();
+
+// Policy accordion
+function togglePolicy(header) {
+  var card = header.parentElement;
+  var body = card.querySelector('.policy-body');
+  var isOpen = card.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.policy-card.open').forEach(function(c) {
+    c.classList.remove('open');
+    c.querySelector('.policy-body').style.maxHeight = '0';
+  });
+
+  // Open clicked if it was closed
+  if (!isOpen) {
+    card.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
 </body>
 </html>

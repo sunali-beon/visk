@@ -1,0 +1,139 @@
+/* ============================================================
+   VISK Farm — layout.css
+   Grid system, responsive breakpoints, containers
+   ============================================================ */
+
+/* --- Container --- */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: var(--space-24);
+  padding-right: var(--space-24);
+}
+
+/* --- Section spacing --- */
+.section {
+  padding-top: var(--space-64);
+  padding-bottom: var(--space-64);
+}
+
+.section--tight {
+  padding-top: var(--space-40);
+  padding-bottom: var(--space-40);
+}
+
+.section--flush {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.section--navy {
+  background-color: var(--color-navy);
+  color: var(--color-text-inverse);
+}
+
+.section--navy p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.section--navy h2,
+.section--navy h3,
+.section--navy h4 {
+  color: var(--color-text-inverse);
+}
+
+.section--mist {
+  background-color: var(--color-surface-mist);
+}
+
+.section--light {
+  background-color: var(--color-bg-light);
+}
+
+.section--clear-sky {
+  background-color: var(--color-bg-clear-sky);
+}
+
+/* --- Grid helpers --- */
+.grid {
+  display: grid;
+  gap: var(--space-24);
+}
+
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+.grid--5 { grid-template-columns: repeat(5, 1fr); }
+.grid--6 { grid-template-columns: repeat(6, 1fr); }
+
+/* --- Flex helpers --- */
+.flex { display: flex; }
+.flex--col { flex-direction: column; }
+.flex--wrap { flex-wrap: wrap; }
+.flex--center { align-items: center; justify-content: center; }
+.flex--between { justify-content: space-between; }
+.flex--start { align-items: flex-start; }
+.items-center { align-items: center; }
+.gap-8 { gap: var(--space-8); }
+.gap-12 { gap: var(--space-12); }
+.gap-16 { gap: var(--space-16); }
+.gap-24 { gap: var(--space-24); }
+.gap-32 { gap: var(--space-32); }
+.gap-40 { gap: var(--space-40); }
+.gap-48 { gap: var(--space-48); }
+
+/* --- Text alignment --- */
+.text-center { text-align: center; }
+
+/* --- Responsive Breakpoints --- */
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .container {
+    padding-left: var(--space-40);
+    padding-right: var(--space-40);
+  }
+}
+
+/* Desktop: 1025px+ */
+@media (min-width: 1025px) {
+  .container {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .section {
+    padding-top: var(--space-80);
+    padding-bottom: var(--space-80);
+  }
+
+  .section--tight {
+    padding-top: var(--space-56);
+    padding-bottom: var(--space-56);
+  }
+}
+
+/* Mobile: grid collapse */
+@media (max-width: 767px) {
+  .grid--2,
+  .grid--3,
+  .grid--4,
+  .grid--5,
+  .grid--6 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet: partial collapse */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .grid--4,
+  .grid--5,
+  .grid--6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

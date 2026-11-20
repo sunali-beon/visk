@@ -1,1192 +1,965 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>VISK — Simplifying Personal Care for Everyone</title>
-    <meta name="description" content="VISK is a natural, skin-friendly personal hygiene spray suitable for all genders. pH balanced, eco-friendly, no artificial fragrances.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;700&display=swap">
-    <style>
-    /* VISK Ultraviolet — single-page e-commerce landing */
-    :root {
-      --teal: #3D8B8B;
-      --teal-deep: #2D6B6B;
-      --violet: #C77DFF;
-      --ink: #3A3A4A;
-      --lilac: #F3EEFF;
-      --mist: #E0F0F0;
-      --surface: #FAFAFA;
-      --white: #FFFFFF;
-      --font-display: 'Cormorant Garamond', 'Georgia', serif;
-      --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
-      --radius: 8px;
-      --radius-lg: 16px;
-      color-scheme: light;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--white);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: var(--teal); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--violet); }
-
-    /* ── Utility ── */
-    .section-label {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: clamp(32px, 5vw, 48px);
-      line-height: 1.15;
-      color: var(--ink);
-      text-wrap: balance;
-      margin-bottom: 20px;
-    }
-
-    .section-body {
-      font-size: 16px;
-      line-height: 1.7;
-      max-width: 680px;
-      margin: 0 auto;
-      color: #555;
-    }
-
-    .inner {
-      max-width: 960px;
-      width: 100%;
-      margin: 0 auto;
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    /* ── Parallax sections ── */
-    .parallax-band {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .parallax-bg {
-      position: absolute;
-      inset: -60px 0;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      will-change: transform;
-      z-index: 0;
-    }
-
-    .parallax-band > .inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ── Navigation ── */
-    .site-nav {
-      position: fixed;
-      top: 0;
-      left: 0; right: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(61,139,139,0.1);
-      transition: box-shadow 0.3s;
-    }
-
-    .site-nav.scrolled { box-shadow: 0 2px 20px rgba(58,58,74,0.08); }
-
-    .nav-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 16px;
-    }
-
-    .nav-logo img { height: 36px; width: auto; }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--teal); }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--teal);
-      color: var(--white) !important;
-      padding: 10px 24px;
-      border-radius: 40px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: background 0.2s;
-    }
-
-    .nav-cta:hover { background: var(--teal-deep); color: var(--white) !important; }
-
-    /* Mobile menu toggle */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .nav-toggle svg { display: block; }
-
-    /* ── Hero ── */
-    .hero {
-      background: url('images/visk-bg.png') no-repeat center 0;
-      height: 770px;
-      position: relative;
-    }
-
-    .hero-inner {
-      display: flex;
-      padding: 30px;
-      max-width: 1300px;
-      width: 100%;
-      margin: 0 auto;
-      padding-top: 100px;
-    }
-
-    .hero-left {
-      width: 500px;
-    }
-
-    .hero-headline {
-      font-family: var(--font-display);
-      font-size: 55px;
-      font-weight: 600;
-      line-height: 65px;
-      color: var(--ink);
-      text-wrap: balance;
-      padding: 24px 0;
-    }
-
-    .hero-headline em {
-      font-style: italic;
-      color: var(--teal);
-    }
-
-    .hero-list {
-      list-style: disc;
-      padding-left: 20px;
-    }
-
-    .hero-list li {
-      font-family: var(--font-body);
-      font-size: 18px;
-      color: var(--ink);
-      line-height: 27px;
-      padding-bottom: 4px;
-      font-weight: 300;
-    }
-
-    .hero-bullets {
-      display: flex;
-      justify-content: flex-end;
-      flex-direction: column;
-      padding: 0 0 0 80px;
-    }
-
-    .hero-bullet {
-      font-family: var(--font-body);
-      font-size: 20px;
-      font-weight: 400;
-      border-bottom: 1px solid var(--ink);
-      margin-bottom: 40px;
-      padding-left: 50px;
-      text-align: right;
-      position: relative;
-      padding-bottom: 8px;
-    }
-
-    .hero-bullet::before {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background-color: var(--ink);
-    }
-
-    .hero-bullet::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      right: 0;
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background-color: var(--ink);
-    }
-
-    .nav-logo-hero img { width: auto; height: 48px; }
-
-    /* ── CTA Buttons ── */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--teal);
-      color: var(--white);
-      padding: 16px 36px;
-      border-radius: 40px;
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: all 0.25s;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(61,139,139,0.25);
-    }
-
-    .btn-primary:hover {
-      background: var(--teal-deep);
-      color: var(--white);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(61,139,139,0.3);
-    }
-
-    .btn-primary .price-tag {
-      background: rgba(255,255,255,0.2);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--ink);
-      padding: 14px 28px;
-      border: 2px solid var(--ink);
-      border-radius: 40px;
-      font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s;
-      text-decoration: none;
-    }
-
-    .btn-secondary:hover {
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .cta-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    /* ── Features / Why VISK ── */
-    .features-section {
-      padding: 80px 0;
-      background: var(--white);
-      text-align: center;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .feature-card {
-      background: var(--mist);
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(61,139,139,0.1);
-    }
-
-    .feature-icon {
-      width: 56px; height: 56px;
-      background: var(--teal);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-
-    .feature-card h3 {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--ink);
-    }
-
-    .feature-card p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #666;
-    }
-
-    /* ── Uses section ── */
-    .uses-section {
-      padding: 80px 0;
-      background: var(--lilac);
-      position: relative;
-    }
-
-    .uses-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-top: 40px;
-      align-items: start;
-    }
-
-    .uses-image {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      position: sticky;
-      top: 100px;
-    }
-
-    .uses-image img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-
-    .uses-list { list-style: none; }
-
-    .uses-list li {
-      display: flex;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(61,139,139,0.1);
-      align-items: flex-start;
-    }
-
-    .uses-list li:last-child { border-bottom: none; }
-
-    .use-marker {
-      flex-shrink: 0;
-      width: 28px; height: 28px;
-      background: var(--teal);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .uses-list strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 2px;
-    }
-
-    .uses-list span {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    /* ── Ingredients parallax band ── */
-    .ingredients-section {
-      padding: 80px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ingredients-section .parallax-bg {
-      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-deep) 100%);
-    }
-
-    .ingredients-section .inner { position: relative; z-index: 1; }
-
-    .ingredients-section .section-label { color: rgba(255,255,255,0.7); }
-    .ingredients-section .section-title { color: var(--white); }
-
-    .ingredients-text {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-      color: rgba(255,255,255,0.85);
-      font-size: 17px;
-      line-height: 1.75;
-    }
-
-    .ingredients-text p { margin-bottom: 20px; }
-
-    .ingredients-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 40px;
-      padding: 10px 24px;
-      margin-top: 12px;
-      font-weight: 600;
-      color: var(--white);
-      font-size: 15px;
-    }
-
-    /* ── Pricing ── */
-    .pricing-section {
-      padding: 80px 0;
-      background: var(--white);
-      text-align: center;
-    }
-
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-      max-width: 840px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .pricing-card {
-      background: var(--surface);
-      border: 2px solid transparent;
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
-      text-align: center;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .pricing-card.featured {
-      border-color: var(--teal);
-      background: var(--mist);
-      transform: scale(1.04);
-    }
-
-    .pricing-card.featured::before {
-      content: 'BEST VALUE';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--violet);
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      padding: 4px 16px;
-      border-radius: 20px;
-    }
-
-    .pricing-card .bottle-img {
-      width: 120px;
-      height: 160px;
-      margin: 0 auto 16px;
-      object-fit: contain;
-    }
-
-    .pricing-card .bottle-placeholder {
-      width: 120px;
-      height: 160px;
-      margin: 0 auto 16px;
-      background: var(--mist);
-      border: 2px dashed rgba(61,139,139,0.3);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--teal);
-      font-size: 12px;
-      font-weight: 500;
-      text-align: center;
-      padding: 8px;
-    }
-
-    .pricing-card h3 {
-      font-family: var(--font-display);
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--ink);
-    }
-
-    .pricing-card .card-desc {
-      font-size: 13px;
-      color: #888;
-      margin-bottom: 20px;
-    }
-
-    .pricing-card .price {
-      font-family: var(--font-display);
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--teal);
-      line-height: 1;
-    }
-
-    .pricing-card .price span {
-      font-size: 16px;
-      font-weight: 400;
-      color: #888;
-    }
-
-    .pricing-card .price-note {
-      font-size: 12px;
-      color: #999;
-      margin-top: 6px;
-      margin-bottom: 24px;
-    }
-
-    .pricing-card .btn-primary {
-      width: 100%;
-      justify-content: center;
-      padding: 14px 24px;
-      font-size: 15px;
-    }
-
-    /* ── B2B Contact ── */
-    .b2b-section {
-      padding: 40px 0;
-      background: var(--lilac);
-      text-align: center;
-    }
-
-    .b2b-section p {
-      font-size: 16px;
-      color: var(--ink);
-    }
-
-    .b2b-section a {
-      font-weight: 600;
-      color: var(--teal);
-    }
-
-    /* ── Policies ── */
-    .policies-section {
-      padding: 60px 0;
-      background: var(--mist);
-    }
-
-    .policies-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .policy-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .policy-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 24px;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
-    }
-
-    .policy-header:hover { background: var(--lilac); }
-
-    .policy-header h3 {
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .policy-header svg {
-      flex-shrink: 0;
-      transition: transform 0.3s;
-    }
-
-    .policy-card.open .policy-header svg {
-      transform: rotate(180deg);
-    }
-
-    .policy-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .policy-body-inner {
-      padding: 0 24px 24px;
-      font-size: 14px;
-      line-height: 1.7;
-      color: #666;
-    }
-
-    .policy-body-inner h4 {
-      font-weight: 600;
-      color: var(--ink);
-      margin: 16px 0 6px;
-      font-size: 14px;
-    }
-
-    .policy-body-inner h4:first-child { margin-top: 0; }
-
-    .policy-body-inner p { margin-bottom: 10px; }
-
-    .policy-body-inner ul {
-      list-style: disc;
-      padding-left: 20px;
-      margin-bottom: 10px;
-    }
-
-    .policy-body-inner li { margin-bottom: 4px; }
-
-    /* ── Footer ── */
-    .site-footer {
-      background: var(--ink);
-      color: rgba(255,255,255,0.7);
-      padding: 48px 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-    }
-
-    .footer-brand img {
-      height: 40px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      margin-bottom: 16px;
-    }
-
-    .footer-brand p {
-      font-size: 14px;
-      line-height: 1.6;
-      max-width: 280px;
-    }
-
-    .footer-col h4 {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-
-    .footer-col ul { list-style: none; }
-
-    .footer-col li {
-      font-size: 14px;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .footer-col a {
-      color: rgba(255,255,255,0.7);
-      transition: color 0.2s;
-    }
-
-    .footer-col a:hover { color: var(--white); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 40px;
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 12px;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .hero { height: auto; background: url('images/visk-mbg.png') no-repeat center 0; background-size: 100%; }
-      .hero-inner { flex-direction: column; padding: 24px; }
-      .hero-left { width: 100%; order: 2; padding-top: 80px; }
-      .hero-bullets { order: 1; padding: 282px 0 0 20px; width: 150px; }
-      .hero-bullet { font-size: 14px; padding-left: 0; }
-      .hero-headline { font-size: 36px; line-height: 46px; }
-      .hero-list li { font-size: 16px; }
-      .cta-group { justify-content: center; }
-      .features-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
-      .uses-grid { grid-template-columns: 1fr; }
-      .uses-image { position: static; }
-      .pricing-cards { grid-template-columns: 1fr; max-width: 340px; }
-      .pricing-card.featured { transform: none; }
-
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-headline { font-size: 32px; }
-      .btn-primary { width: 100%; justify-content: center; }
-    }
-
-    /* ── Reduced motion ── */
-    @media (prefers-reduced-motion: reduce) {
-      .parallax-bg { position: absolute; transform: none !important; }
-    }
-    </style>
-</head>
-<body>
-
-<!-- Navigation -->
-<nav class="site-nav" id="siteNav">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="images/logo.png" alt="VISK — Instant Magic!"></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#features">Why VISK</a></li>
-      <li><a href="#uses">How to Use</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#policies">Policies</a></li>
-      <li><a href="#pricing" class="nav-cta">Buy Now</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- Hero -->
-<header class="hero" id="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <a href="#" class="nav-logo-hero"><img src="images/logo.png" alt="VISK"></a>
-      <h1 class="hero-headline">Simplifying <em>Personal Care</em></h1>
-      <ul class="hero-list">
-        <li>A Personal Hygiene Spray Suitable for All Genders</li>
-        <li>Say goodbye to unpleasant odours with VISK, a skin-friendly spray that keeps you fresh without relying on artificial fragrances.</li>
-        <li>VISK is gentle yet effective — experience long-lasting freshness with every spray, and use as many times as needed. It's completely safe!</li>
-      </ul>
-      <div class="cta-group" style="margin-top: 30px;">
-        <a href="#pricing" class="btn-primary">Buy Now <span class="price-tag">From ₹499</span></a>
-      </div>
-    </div>
-    <div class="hero-bullets">
-      <div class="hero-bullet">Hypoallergenic</div>
-      <div class="hero-bullet">Covers Odour</div>
-      <div class="hero-bullet">pH Balanced</div>
-    </div>
-  </div>
-</header>
-
-<!-- Why VISK -->
-<section class="features-section" id="features">
-  <div class="inner">
-    <div class="section-label">Why VISK</div>
-    <h2 class="section-title">Personal freshness, reimagined</h2>
-    <p class="section-body">VISK is a personal hygiene spray suitable for all genders. It neutralises unwanted scents without relying on artificial fragrances, so you feel clean and confident — naturally.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z" fill="white" opacity="0.3"/><path d="M12 8v4l3 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Instant Freshness</h3>
-        <p>Clean in seconds, comfortable for hours. Use as many times as needed throughout the day — completely safe for everyday use.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="white" opacity="0.3"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke="white" stroke-width="1.5"/></svg>
-        </div>
-        <h3>Gentle on Skin</h3>
-        <p>Formulated with a neutral pH of 5.5, VISK is safe enough for the most sensitive skin. Dermatologically considered, non-toxic, and non-irritating.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" fill="white" opacity="0.3"/><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" stroke="white" stroke-width="1.5"/><path d="M12 22V12M4 7l8 5 8-5" stroke="white" stroke-width="1.5"/></svg>
-        </div>
-        <h3>All Natural</h3>
-        <p>Made from water, salt, and a gentle electrolysis process. VISK degrades into salt and water after use — zero ecological footprint.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- How to Use / Everyday Uses -->
-<section class="uses-section parallax-band" id="uses">
-  <div class="inner">
-    <div class="section-label">Everyday Freshness</div>
-    <h2 class="section-title">Use it anywhere, anytime</h2>
-    <p class="section-body" style="margin-bottom: 8px;">A quick spray keeps you feeling fresh throughout the day — at home, at work, or on the go.</p>
-    <div class="uses-grid">
-      <div class="uses-image">
-        <img src="images/img01.png" alt="Active people staying fresh">
-      </div>
-      <div>
-        <ul class="uses-list">
-          <li>
-            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><strong>Underarm Freshness</strong><span>Neutralise underarm odours naturally, without aluminium or artificial fragrances.</span></div>
-          </li>
-          <li>
-            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><strong>Post-Workout Refresh</strong><span>A quick spray after exercise for instant freshness, wherever you are.</span></div>
-          </li>
-          <li>
-            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><strong>All-Over Body Freshness</strong><span>Use on neck, chest, back, and anywhere else you need a quick refresh.</span></div>
-          </li>
-          <li>
-            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><strong>Intimate Area Care</strong><span>Gentle enough for your most sensitive areas. Maintain comfort and freshness naturally.</span></div>
-          </li>
-          <li>
-            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><strong>Hand Freshness</strong><span>Remove cooking odours from your hands after handling onion, garlic, or fish.</span></div>
-          </li>
-          <li>
-            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><strong>Elderly Care</strong><span>Gentle personal freshness for seniors — maintaining dignity and comfort every day.</span></div>
-          </li>
-          <li>
-            <span class="use-marker"><svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M3 7l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div><strong>On-the-Go Freshness</strong><span>Compact enough to carry everywhere. A few sprays and you're ready for anything.</span></div>
-          </li>
-        </ul>
-        <div style="margin-top: 32px;">
-          <a href="#pricing" class="btn-primary">Buy VISK Now</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- What's Inside — parallax teal band -->
-<section class="ingredients-section parallax-band" id="ingredients">
-  <div class="parallax-bg" style="background: linear-gradient(135deg, #3D8B8B, #2D6B6B);"></div>
-  <div class="inner" style="text-align: center;">
-    <div class="section-label">What's Inside</div>
-    <h2 class="section-title">Simple. Natural. Effective.</h2>
-    <div class="ingredients-text">
-      <p>VISK is formulated from just three ingredients: purified water, salt, and a gentle electrolysis process. The result is a naturally oxidised solution that's pH-balanced at 5.5 — matching your skin's own pH.</p>
-      <p>After use, VISK simply breaks down into salt and water, leaving no residue and no ecological footprint. It's personal care that's kind to you and to the planet.</p>
-      <div class="ingredients-highlight">
-        <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9s3.36 7.5 7.5 7.5 7.5-3.36 7.5-7.5S13.14 1.5 9 1.5zM9 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="white" opacity="0.4"/><path d="M8 5.5h2v5H8zM8 12h2v1.5H8z" fill="white"/></svg>
-        100% Natural &nbsp;·&nbsp; pH 5.5 &nbsp;·&nbsp; Non-Toxic &nbsp;·&nbsp; Eco-Friendly
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Pricing -->
-<section class="pricing-section parallax-band" id="pricing">
- <div class="inner">
-    <div class="section-label">Choose Your Pack</div>
-    <h2 class="section-title">Fresh starts at ₹499</h2>
-    <p class="section-body">All prices inclusive of GST. Free shipping across India on all orders.</p>
-    <div class="pricing-cards">
-      <div class="pricing-card">
-        <img src="images/bottle.png" alt="VISK 100ml bottle" class="bottle-img">
-        <h3>Single</h3>
-        <p class="card-desc">100 ml spray bottle</p>
-        <div class="price">₹499</div>
-        <p class="price-note">MRP incl. of all taxes</p>
-        <a href="https://rzp.io/rzp/2P9HScnw" target="_blank" class="btn-primary">Buy Now</a>
-      </div>
-      <div class="pricing-card featured">
-        <img src="images/2bottle.png" alt="VISK Duo Pack" class="bottle-img">
-        <h3>Duo Pack</h3>
-        <p class="card-desc">2 × 100 ml bottles</p>
-        <div class="price">₹699</div>
-        <p class="price-note">Save ₹299 · MRP incl. of all taxes</p>
-        <a href="https://rzp.io/rzp/Xb46dRwH" target="_blank" class="btn-primary">Buy Now</a>
-      </div>
-      <div class="pricing-card">
-        <img src="images/3bottle.png" alt="VISK Family Pack" class="bottle-img">
-        <h3>Family Pack</h3>
-        <p class="card-desc">2 + 1 Free · 3 × 100 ml</p>
-        <div class="price">₹999</div>
-        <p class="price-note">Best value · MRP incl. of all taxes</p>
-        <a href="https://rzp.io/rzp/5W4gIh6" target="_blank" class="btn-primary">Buy Now</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- B2B -->
-<section class="b2b-section">
-  <div class="inner">
-    <p>For wholesale, distribution, or institutional orders: <a href="mailto:sunali@visk.in">sunali@visk.in</a></p>
-  </div>
-</section>
-
-<!-- Policies -->
-<section class="policies-section" id="policies">
-  <div class="inner">
-    <div class="section-label">Store Policies</div>
-    <h2 class="section-title" style="font-size: clamp(24px, 4vw, 36px);">Everything you need to know</h2>
-    <div class="policies-grid">
-
-      <div class="policy-card">
-        <div class="policy-header" onclick="togglePolicy(this)">
-          <h3>Shipping &amp; Delivery</h3>
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="policy-body">
-          <div class="policy-body-inner">
-            <h4>Dispatch &amp; Delivery</h4>
-            <p>All orders are dispatched within 2 business days of order confirmation. Standard delivery takes 5–7 business days across India. We ship via reputed courier partners with tracking.</p>
-            <h4>Shipping Charges</h4>
-            <p>Free standard shipping on all orders across India. Express delivery options may be available at checkout for select pin codes at an additional charge.</p>
-            <h4>Order Tracking</h4>
-            <p>Once your order is dispatched, you will receive an email and/or SMS with your tracking details. You can track your shipment using the link provided.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="policy-card">
-        <div class="policy-header" onclick="togglePolicy(this)">
-          <h3>Returns &amp; Refunds</h3>
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="policy-body">
-          <div class="policy-body-inner">
-            <h4>Return Window</h4>
-            <p>We accept returns within 7 days of delivery for unused and unopened products in their original packaging. Opened or used products cannot be returned for hygiene reasons.</p>
-            <h4>How to Initiate a Return</h4>
-            <p>Email us at sunali@visk.in with your order number and reason for return. We will provide a return shipping label or arrange pickup within 3 business days.</p>
-            <h4>Refund Process</h4>
-            <p>Refunds are processed within 7–10 business days after we receive and inspect the returned product. The refund will be credited to your original payment method.</p>
-            <h4>Damaged or Defective Products</h4>
-            <p>If you receive a damaged or defective product, please contact us within 48 hours of delivery with photographs. We will arrange a free replacement or full refund.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="policy-card">
-        <div class="policy-header" onclick="togglePolicy(this)">
-          <h3>Privacy Policy</h3>
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="policy-body">
-          <div class="policy-body-inner">
-            <h4>Information We Collect</h4>
-            <p>When you place an order, we collect your name, email address, phone number, shipping address, and payment information necessary to process your order.</p>
-            <h4>How We Use Your Information</h4>
-            <ul>
-              <li>Processing and fulfilling your orders</li>
-              <li>Sending order confirmations and shipping updates</li>
-              <li>Responding to your enquiries and support requests</li>
-              <li>Improving our products and services</li>
-            </ul>
-            <h4>Data Protection</h4>
-            <p>We do not sell, trade, or share your personal information with third parties except as necessary to fulfil your order (e.g., shipping partners, payment processors). All transactions are processed through secure, PCI-compliant payment gateways.</p>
-            <h4>Your Rights</h4>
-            <p>You may request access to, correction of, or deletion of your personal data by contacting us at sunali@visk.in.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="policy-card">
-        <div class="policy-header" onclick="togglePolicy(this)">
-          <h3>Terms &amp; Conditions</h3>
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5" stroke="#3A3A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="policy-body">
-          <div class="policy-body-inner">
-            <h4>Product Information</h4>
-            <p>VISK is a personal hygiene spray for external use only. It is not a medicine, drug, or pharmaceutical product. It is classified as a liquid antiseptic for household use. VISK is not intended to diagnose, treat, cure, or prevent any disease.</p>
-            <h4>Pricing</h4>
-            <p>All prices are listed in Indian Rupees (INR) and include applicable GST. We reserve the right to modify prices at any time without prior notice.</p>
-            <h4>Payment</h4>
-            <p>We accept payments via UPI, net banking, credit cards, debit cards, and wallets through our secure payment gateway. Orders are confirmed only upon successful payment.</p>
-            <h4>Limitation of Liability</h4>
-            <p>VISK and Beon Des Tech Systems Pvt. Ltd. shall not be liable for any indirect, incidental, or consequential damages arising from the use of our products. Our total liability is limited to the purchase price of the product.</p>
-            <h4>Governing Law</h4>
-            <p>These terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in Chandigarh.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="site-footer">
-  <div class="inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="images/logo.png" alt="VISK">
-        <p>Personal hygiene, simplified. A product by Beon Des Tech Systems Pvt. Ltd.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Manufactured By</h4>
-        <ul>
-          <li>Tristar Pharmaceuticals Pvt. Ltd.</li>
-          <li>Plot No. 66, Phase 2</li>
-          <li>Industrial Area, Panchkula</li>
-          <li>Haryana 134113</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li>Beon Des Tech Systems Pvt. Ltd.</li>
-          <li>sunali@visk.in</li>
-        
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 VISK &middot; Marketed by Beon Des Tech Systems Pvt. Ltd.</span>
-      <span>Manufactured by Tristar Pharmaceuticals Pvt. Ltd., Panchkula</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-// Parallax scroll effect
-(function() {
-  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) return;
-
-  var bgs = document.querySelectorAll('.parallax-bg');
-  var ticking = false;
-
-  function updateParallax() {
-    var scrollY = window.scrollY;
-    bgs.forEach(function(bg) {
-      var section = bg.parentElement;
-      var rect = section.getBoundingClientRect();
-      var sectionTop = rect.top + scrollY;
-      var offset = (scrollY - sectionTop) * 0.3;
-      bg.style.transform = 'translateY(' + offset + 'px)';
-    });
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  }, { passive: true });
-})();
-
-// Nav scroll shadow
-(function() {
-  var nav = document.getElementById('siteNav');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 40) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }, { passive: true });
-})();
-
-// Mobile nav toggle
-(function() {
-  var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  if (toggle && links) {
-    toggle.addEventListener('click', function() {
-      if (links.style.display === 'flex') {
-        links.style.display = 'none';
-      } else {
-        links.style.display = 'flex';
-        links.style.flexDirection = 'column';
-        links.style.position = 'absolute';
-        links.style.top = '100%';
-        links.style.left = '0';
-        links.style.right = '0';
-        links.style.background = 'rgba(255,255,255,0.98)';
-        links.style.padding = '16px';
-        links.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VISK Kavach — Farm Sanitation &amp; Hygiene Input | HOCl for Modern Indian Farms</title>
+  <meta name="description" content="VISK Kavach is a food-grade HOCl farm hygiene concentrate for water sanitation, greenhouse hygiene, and post-harvest produce wash. Zero residue. Zero waiting period.">
+  <meta name="keywords" content="VISK Kavach, HOCl, farm sanitation, farm hygiene, hypochlorous acid, water sanitation, greenhouse hygiene, post-harvest wash, poultry hygiene, aquaculture sanitation">
+  <link rel="canonical" href="https://www.viskkavach.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VISK Kavach — Farm Sanitation & Hygiene Input">
+  <meta property="og:description" content="Nature's own sanitizer for your water, greenhouse, and harvest. Food-grade HOCl. Zero residue.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.viskkavach.com/">
+  <meta property="og:image" content="https://www.viskkavach.com/images/og-home.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/core-pages.css">
+
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="images/Images/Hero/hero-tomato-polyhouse.png">
+
+  <!-- COMPONENT: ANALYTICS-HEAD START -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NVT98HLW');</script>
+  <!-- COMPONENT: ANALYTICS-HEAD END -->
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VISK Kavach",
+    "url": "https://www.viskkavach.com",
+    "logo": "https://www.viskkavach.com/images/Icons/SVG/logo-visk-horizontal-dark.svg",
+    "description": "VISK Kavach — Food-grade HOCl farm hygiene concentrate for water sanitation, greenhouse hygiene, and post-harvest produce wash.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "availableLanguage": ["English", "Hindi"]
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Tristar Pharmaceuticals Pvt. Ltd.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Panchkula",
+        "addressRegion": "Haryana",
+        "addressCountry": "IN"
       }
-    });
-  }
-})();
-
-// Policy accordion
-function togglePolicy(header) {
-  var card = header.parentElement;
-  var body = card.querySelector('.policy-body');
-  var isOpen = card.classList.contains('open');
-
-  // Close all
-  document.querySelectorAll('.policy-card.open').forEach(function(c) {
-    c.classList.remove('open');
-    c.querySelector('.policy-body').style.maxHeight = '0';
-  });
-
-  // Open clicked if it was closed
-  if (!isOpen) {
-    card.classList.add('open');
-    body.style.maxHeight = body.scrollHeight + 'px';
-  }
-}
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-  a.addEventListener('click', function(e) {
-    var target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  });
-});
-</script>
+  }
+  </script>
 
+  <!-- Structured Data: Product -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "VISK Kavach कवच — Farm Hygiene Concentrate",
+    "description": "Food-grade HOCl (Hypochlorous Acid) farm sanitation and hygiene input. For water line sanitation, greenhouse hygiene, and post-harvest produce wash.",
+    "brand": {
+      "@type": "Brand",
+      "name": "VISK"
+    },
+    "category": "Farm Sanitation & Hygiene Input",
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Tristar Pharmaceuticals Pvt. Ltd."
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- COMPONENT: ANALYTICS-BODY START -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVT98HLW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- COMPONENT: ANALYTICS-BODY END -->
+
+  <!-- COMPONENT: HEADER START -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="/" class="site-header__logo" aria-label="VISK — Home">
+        <img src="images/Icons/SVG/logo-visk-horizontal-light.svg" alt="VISK" width="152" height="44">
+      </a>
+
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="applications.html" class="site-nav__link">Explore Applications</a>
+        <a href="science.html" class="site-nav__link">The Science</a>
+        <a href="how-to-use.html" class="site-nav__link">How to Use VISK</a>
+        <a href="about.html" class="site-nav__link">About VISK</a>
+        <a href="contact.html" class="site-nav__link">Contact</a>
+      </nav>
+
+      <a href="https://wa.me/917743027145?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20VISK%20Kavach" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">
+        <img src="images/Icons/SVG/icon-chat-white.svg" alt="" class="btn__icon" width="20" height="20" aria-hidden="true">
+        Get VISK
+      </a>
+
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle__bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="applications.html" class="mobile-menu__link">Explore Applications</a>
+      <a href="science.html" class="mobile-menu__link">The Science</a>
+      <a href="how-to-use.html" class="mobile-menu__link">How to Use VISK</a>
+      <a href="about.html" class="mobile-menu__link">About VISK</a>
+      <a href="contact.html" class="mobile-menu__link">Contact</a>
+      <div class="mobile-menu__cta">
+        <a href="https://wa.me/917743027145?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20VISK%20Kavach" class="btn btn--accent" target="_blank" rel="noopener" style="width:100%">
+          Talk to Us on WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- COMPONENT: HEADER END -->
+
+  <main>
+
+    <!-- COMPONENT: HERO START -->
+    <section class="hero section" id="hero" aria-labelledby="hero-headline">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Farm sanitation. Reimagined.</p>
+            <h1 class="hero__headline" id="hero-headline">
+              Not a Pesticide.<br>
+              <span>Something Better.</span>
+            </h1>
+            <p class="hero__body">
+              VISK Kavach is nature's own sanitizer — a food-grade hygiene input for your water, greenhouse, and harvest. Zero waiting period. Zero residue. Safe enough to use on the day you pick.
+            </p>
+            <div class="hero__ctas">
+              <a href="https://wa.me/917743027145?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20VISK%20Kavach" class="btn btn--accent" target="_blank" rel="noopener">
+                <svg class="btn__icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M10 0C4.5 0 0 4.5 0 10C0 11.8 0.5 13.5 1.4 15L0 20L5.2 18.6C6.6 19.4 8.3 19.9 10 19.9C15.5 19.9 20 15.4 20 9.9C20 7.3 19 4.8 17.1 2.9C15.2 1 12.7 0 10 0ZM10 18.2C8.5 18.2 7 17.8 5.7 17L5.4 16.8L2.3 17.6L3.1 14.6L2.9 14.3C1.9 12.9 1.4 11.5 1.4 10C1.4 5.3 5.3 1.4 10 1.4C12.3 1.4 14.4 2.3 16 3.9C17.6 5.5 18.6 7.6 18.6 10C18.6 14.7 14.7 18.2 10 18.2ZM14.6 12.1C14.4 12 13.1 11.4 12.9 11.3C12.7 11.2 12.5 11.2 12.4 11.4C12.2 11.6 11.8 12.1 11.6 12.3C11.5 12.5 11.3 12.5 11.1 12.4C10.9 12.3 10 12 9 11.1C8.2 10.4 7.6 9.5 7.5 9.3C7.3 9.1 7.5 9 7.6 8.9C7.7 8.8 7.8 8.6 7.9 8.5C8 8.4 8.1 8.3 8.1 8.1C8.2 7.9 8.1 7.8 8.1 7.7C8 7.6 7.5 6.3 7.3 5.9C7.1 5.5 7 5.5 6.8 5.5H6.3C6.1 5.5 5.8 5.6 5.6 5.8C5.4 6 4.7 6.6 4.7 7.9C4.7 9.2 5.6 10.4 5.7 10.6C5.8 10.8 7.5 13.3 10.1 14.4C12.7 15.5 12.7 15.1 13.2 15.1C13.7 15 14.8 14.4 15 13.9C15.2 13.3 15.2 12.8 15.1 12.7C15 12.3 14.8 12.2 14.6 12.1Z" fill="currentColor"/>
+                </svg>
+                Talk to Us on WhatsApp
+              </a>
+              <a href="#how-it-works" class="btn btn--secondary">
+                See How It Works
+              </a>
+            </div>
+            <div class="hero__usage-note">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3M8 10v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <div class="hero__usage-lines">
+                <p class="hero__usage-line">For modern Indian farms. From water line to harvest.</p>
+                <p class="hero__usage-line">Always follow the application-specific usage guide.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__media">
+            <img src="images/Images/Hero/hero-tomato-polyhouse.png" alt="Clean water flowing through a modern greenhouse irrigation system — VISK Kavach farm hygiene" class="hero__image" width="620" height="580" loading="eager">
+            <div class="hero__caption-card">
+              <img src="images/Icons/SVG/icon-droplet-aqua.svg" alt="" class="hero__caption-icon" width="32" height="32" aria-hidden="true">
+              <div class="hero__caption-text">
+                <p class="hero__caption-title">Clean water. Better beginnings.</p>
+                <p class="hero__caption-desc">Hygiene across your agricultural ecosystem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: HERO END -->
+
+
+    <!-- COMPONENT: FARM-STRIP START -->
+    <section class="farm-strip" aria-label="Farm types served">
+      <div class="container">
+        <div class="farm-strip__inner">
+          <span class="farm-strip__label">A sanitation input.<br>For every kind of farm.</span>
+          <div class="farm-strip__list">
+            <span class="farm-strip__item">
+              <img src="images/Icons/SVG/icon-sprout-teal.svg" alt="" class="farm-strip__icon" width="24" height="24" aria-hidden="true">
+              Crop &amp; protected cultivation
+            </span>
+            <span class="farm-strip__item">
+              <img src="images/Icons/SVG/icon-fish-teal.svg" alt="" class="farm-strip__icon" width="24" height="24" aria-hidden="true">
+              Fish &amp; shrimp farming
+            </span>
+            <span class="farm-strip__item">
+              <img src="images/Icons/SVG/icon-egg-teal.svg" alt="" class="farm-strip__icon" width="24" height="24" aria-hidden="true">
+              Poultry &amp; biosecurity
+            </span>
+            <span class="farm-strip__item">
+              <img src="images/Icons/SVG/icon-basket-teal.svg" alt="" class="farm-strip__icon" width="24" height="24" aria-hidden="true">
+              Harvest &amp; pack-house
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: FARM-STRIP END -->
+
+
+    <!-- COMPONENT: CHALLENGE START -->
+    <section class="challenge" id="challenge" aria-labelledby="challenge-title">
+      <div class="container">
+        <!-- Header -->
+        <div class="challenge__header">
+          <p class="eyebrow">The Hidden Challenge</p>
+          <h2 id="challenge-title">Your Water Is Carrying<br>More Than Nutrients.</h2>
+          <p>Irrigation water picks up bacteria, fungi, and biofilm as it moves through your system. By the time it reaches your crop, it may carry microbial loads that compromise plant health and post-harvest shelf life.</p>
+        </div>
+
+        <!-- Research-backed stats -->
+        <div class="challenge__stats-row">
+          <div class="challenge__stat-card">
+            <span class="challenge__stat-value">48,300 → 21,17,000</span>
+            <span class="challenge__stat-desc">CFU/mL · wellhead to drip emitter</span>
+            <span class="challenge__stat-source">Paul Fisher · University of Florida, 2016</span>
+          </div>
+          <div class="challenge__stat-card">
+            <span class="challenge__stat-value">48%</span>
+            <span class="challenge__stat-desc">of foodborne illness outbreaks linked to contaminated produce</span>
+            <span class="challenge__stat-source">Wang et al. · Purdue University, 2020</span>
+          </div>
+          <div class="challenge__stat-card">
+            <span class="challenge__stat-value">7.85-log</span>
+            <span class="challenge__stat-desc">E. coli reduction achieved with HOCl produce wash</span>
+            <span class="challenge__stat-source">Bari et al. · Journal of Food Protection, 2003</span>
+          </div>
+        </div>
+
+        <!-- Irrigation pathway -->
+        <div class="challenge__pathway">
+          <div class="challenge__pathway-header">
+            <p class="eyebrow">A hidden journey through your irrigation line</p>
+          </div>
+          <div class="challenge__pathway-illustration">
+            <img src="images/Images/Illustrations/SVG/illustration-irrigation-pathway.svg" alt="Irrigation pathway showing how water picks up contaminants from well to produce" loading="lazy">
+          </div>
+          <div class="challenge__pathway-steps">
+            <div class="challenge__pathway-step">
+              <h4>Well / Borewell</h4>
+              <p>Water starts relatively clean at the source</p>
+            </div>
+            <div class="challenge__pathway-step">
+              <h4>Storage Tank</h4>
+              <p>Stagnant water breeds bacteria &amp; algae</p>
+            </div>
+            <div class="challenge__pathway-step">
+              <h4>Main Line</h4>
+              <p>Biofilm builds up inside pipes over time</p>
+            </div>
+            <div class="challenge__pathway-step">
+              <h4>Drip Emitters</h4>
+              <p>Microbial load peaks at the delivery point</p>
+            </div>
+            <div class="challenge__pathway-step">
+              <h4>Root Zone</h4>
+              <p>Contaminated water reaches your plants</p>
+            </div>
+            <div class="challenge__pathway-step">
+              <h4>Harvested Produce</h4>
+              <p>Pathogens carry through to your crop</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="challenge__footnote">All statistics sourced from published, peer-reviewed research. Full references available on our <a href="knowledge/research.html">Research &amp; References</a> page.</p>
+      </div>
+    </section>
+    <!-- COMPONENT: CHALLENGE END -->
+
+
+    <!-- COMPONENT: WHAT-VISK START -->
+    <section class="what-visk" id="what-is-visk" aria-labelledby="what-visk-title">
+      <div class="container">
+        <div class="what-visk__grid">
+          <div class="what-visk__media">
+            <img src="images/Images/Products/visk-kavach-product-composition.png" alt="VISK Kavach farm hygiene concentrate — HOCl solution" class="what-visk__image" width="560" height="480" loading="lazy">
+            <div class="what-visk__product-badge">
+              <div class="what-visk__product-badge-icon">
+                <img src="images/Icons/SVG/icon-droplet-teal.svg" alt="" width="20" height="20" aria-hidden="true">
+              </div>
+              <div class="what-visk__product-badge-text">
+                <strong>VISK Kavach</strong>
+                <span>HOCl sanitation · Available in 1 L and 5 L containers</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="what-visk__content">
+            <div class="what-visk__content-icon">
+              <img src="images/Icons/SVG/icon-droplet-teal.svg" alt="" width="32" height="32" aria-hidden="true">
+            </div>
+            <p class="eyebrow">The science, simply put</p>
+            <h2 id="what-visk-title">What is VISK?</h2>
+            <p class="what-visk__body-lg">VISK Kavach is hypochlorous acid (HOCl), the same molecule your own immune system produces to fight infection. It is manufactured with electrolyzed water technology, using only salt, water and electricity.</p>
+            <p>HOCl helps eliminate biofilm, bacteria, fungi and viruses. Under recommended use conditions it leaves no chemical residue, and after use it breaks down into salt water.</p>
+
+            <div class="what-visk__benefits">
+              <div class="what-visk__benefit">
+                <div class="what-visk__benefit-icon">
+                  <img src="images/Icons/SVG/icon-shield-check-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+                </div>
+                <div class="what-visk__benefit-text">
+                  <h4>Eliminates 99.99% pathogens</h4>
+                  <p>Helps eliminate biofilm, bacteria, fungi and viruses on contact.</p>
+                </div>
+              </div>
+              <div class="what-visk__benefit">
+                <div class="what-visk__benefit-icon">
+                  <img src="images/Icons/SVG/icon-droplet-check-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+                </div>
+                <div class="what-visk__benefit-text">
+                  <h4>Zero residue on produce</h4>
+                  <p>Leaves no chemical residue under recommended use conditions.</p>
+                </div>
+              </div>
+              <div class="what-visk__benefit">
+                <div class="what-visk__benefit-icon">
+                  <img src="images/Icons/SVG/icon-droplet-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+                </div>
+                <div class="what-visk__benefit-text">
+                  <h4>Biodegradable, reverts to water</h4>
+                  <p>Breaks down into salt water after use.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="what-visk__actions">
+              <a href="#order" class="btn btn--primary">Order VISK Kavach</a>
+              <a href="knowledge/how-hocl-works.html" class="what-visk__link">
+                Learn More About HOCl
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: WHAT-VISK END -->
+
+
+    <!-- COMPONENT: APPLICATIONS START -->
+    <section class="applications" id="applications" aria-labelledby="applications-title">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Find Your Application</p>
+          <h2 id="applications-title">Find Your Farm's Sanitation Plan.</h2>
+          <p class="section-header__desc">VISK Kavach works across farm environments — from irrigation water to post-harvest wash. Select your crop or operation to see the relevant application guide.</p>
+        </div>
+
+        <!-- Filter chips -->
+        <div class="applications__filters" role="tablist" aria-label="Filter by farm type">
+          <button class="applications__chip applications__chip--active" role="tab" aria-selected="true" data-filter="all">All farm types</button>
+          <button class="applications__chip" role="tab" aria-selected="false" data-filter="crop">Crop &amp; protected farming</button>
+          <button class="applications__chip" role="tab" aria-selected="false" data-filter="aqua">Aquaculture &amp; poultry</button>
+        </div>
+
+        <!-- Application cards grid -->
+        <div class="applications__grid">
+          <a href="hocl-tomato-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-tomato-farming.png" alt="Tomato farming sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Tomato</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Water line sanitation and foliar hygiene for open-field and polyhouse tomato.</p>
+            </div>
+          </a>
+          <a href="hocl-strawberry-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-strawberry-farming.png" alt="Strawberry farming sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Strawberry</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Pre-harvest and post-harvest wash for shelf life and food safety.</p>
+            </div>
+          </a>
+          <a href="hocl-grape-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-grape-farming.png" alt="Grape vineyard sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Grape</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Vineyard irrigation sanitation and pre-export produce wash.</p>
+            </div>
+          </a>
+          <a href="hocl-leafy-greens-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-leafy-greens.png" alt="Leafy greens sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Leafy Greens</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Hydroponic and soil-based leafy green water sanitation.</p>
+            </div>
+          </a>
+          <a href="hocl-greenhouse-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-greenhouse-polyhouse.png" alt="Greenhouse sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Greenhouse / Polyhouse</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Surface, floor, and benchtop sanitation for protected cultivation.</p>
+            </div>
+          </a>
+          <a href="hocl-fish-shrimp-farming.html" class="app-card" data-type="aqua">
+            <img src="images/Images/Features/application-fish-farming.png" alt="Fish farming sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Fish</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Pond and tank water sanitation for freshwater fish farming.</p>
+            </div>
+          </a>
+          <a href="hocl-aquaponic-farming.html" class="app-card" data-type="aqua">
+            <img src="images/Images/Features/application-aquaponic-farming.png" alt="Aquaponic system sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Aquaponic</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Integrated fish-plant system water and surface hygiene.</p>
+            </div>
+          </a>
+          <a href="hocl-fish-shrimp-farming.html" class="app-card" data-type="aqua">
+            <img src="images/Images/Features/application-shrimp-farming.png" alt="Shrimp farming sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Shrimp</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Hatchery and grow-out water sanitation for shrimp operations.</p>
+            </div>
+          </a>
+          <a href="hocl-poultry-farming.html" class="app-card" data-type="aqua">
+            <img src="images/Images/Features/application-poultry.png" alt="Poultry house sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Poultry</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Drinking water sanitation and house fogging for poultry biosecurity.</p>
+            </div>
+          </a>
+          <a href="hocl-capsicum-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-capsicum.png" alt="Capsicum farming sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Capsicum</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Protected cultivation water line and surface sanitation.</p>
+            </div>
+          </a>
+          <a href="hocl-pomegranate-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-pomegranate.png" alt="Pomegranate farming sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Pomegranate</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Orchard irrigation sanitation and post-harvest produce wash.</p>
+            </div>
+          </a>
+          <a href="hocl-nursery-farming.html" class="app-card" data-type="crop">
+            <img src="images/Images/Features/application-nursery-seedling.png" alt="Nursery sanitation" class="app-card__image" width="292" height="200" loading="lazy">
+            <div class="app-card__body">
+              <div class="app-card__title-row">
+                <h4>Nursery / Seedling</h4>
+                <svg class="app-card__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
+              </div>
+              <p class="app-card__desc">Seedling tray and propagation water sanitation.</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+    <!-- COMPONENT: APPLICATIONS END -->
+
+
+    <!-- COMPONENT: CONCERNS START -->
+    <section class="concerns" id="concerns" aria-labelledby="concerns-title">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Start with your challenge</p>
+          <h2 id="concerns-title">Or Start With Your Biggest Problem.</h2>
+          <p class="concerns__desc">Not sure which application fits? Start with what you're trying to solve — we'll show you how VISK Kavach addresses it.</p>
+        </div>
+
+        <div class="concerns__grid">
+          <a href="hocl-water-irrigation-treatment.html" class="concern-row">
+            <div class="concern-row__icon">
+              <img src="images/Icons/SVG/icon-water-lines-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+            </div>
+            <div class="concern-row__text">
+              <h4>Water &amp; Irrigation</h4>
+              <p>Biofilm, clogged drippers and dirty storage tanks.</p>
+            </div>
+            <div class="concern-row__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+          </a>
+          <a href="hocl-post-harvest-food-safety.html" class="concern-row">
+            <div class="concern-row__icon">
+              <img src="images/Icons/SVG/icon-basket-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+            </div>
+            <div class="concern-row__text">
+              <h4>Post-Harvest &amp; Food Safety</h4>
+              <p>Produce washing, pack-house surfaces and crates.</p>
+            </div>
+            <div class="concern-row__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+          </a>
+          <a href="hocl-farm-biosecurity.html" class="concern-row">
+            <div class="concern-row__icon">
+              <img src="images/Icons/SVG/icon-shield-check-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+            </div>
+            <div class="concern-row__text">
+              <h4>Biosecurity</h4>
+              <p>Entry points, footbaths, vehicles and visitors.</p>
+            </div>
+            <div class="concern-row__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+          </a>
+          <a href="hocl-pathogen-guide.html" class="concern-row">
+            <div class="concern-row__icon">
+              <img src="images/Icons/SVG/icon-microbe-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+            </div>
+            <div class="concern-row__text">
+              <h4>Equipment Sanitation</h4>
+              <p>Pruning tools, harvest bins, trays, and sprayers. Keep your equipment free of microbial buildup between uses.</p>
+            </div>
+            <div class="concern-row__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+          </a>
+          <a href="hocl-pathogen-guide.html" class="concern-row">
+            <div class="concern-row__icon">
+              <img src="images/Icons/SVG/icon-microbe-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+            </div>
+            <div class="concern-row__text">
+              <h4>Pathogen Guide</h4>
+              <p>Understand the bacteria and fungi farms commonly face.</p>
+            </div>
+            <div class="concern-row__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+          </a>
+          <a href="hocl-roots-revival.html" class="concern-row">
+            <div class="concern-row__icon">
+              <img src="images/Icons/SVG/icon-sprout-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+            </div>
+            <div class="concern-row__text">
+              <h4>Hydroponics Roots Protection</h4>
+              <p>Revive and rejuvenate the roots</p>
+            </div>
+            <div class="concern-row__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: CONCERNS END -->
+
+
+    <!-- COMPONENT: HOW-IT-WORKS START -->
+    <section class="how-works" id="how-it-works" aria-labelledby="how-works-title">
+      <div class="container">
+        <div class="how-works__header">
+          <div class="section-header">
+            <p class="eyebrow">How VISK Works</p>
+            <h2 id="how-works-title">Three steps. No new equipment.</h2>
+            <p class="section-header__desc">VISK Kavach integrates into your existing farm systems — water lines, spray units, or a simple bucket.</p>
+          </div>
+          <div class="how-works__header-actions">
+            <a href="tools/dilution-calculator.html" class="how-works__header-link">
+              Open the Dilution Calculator
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="knowledge/usage-guide.html" class="btn btn--secondary btn--sm">See Detailed Usage Guide</a>
+          </div>
+        </div>
+
+        <div class="how-works__steps">
+          <!-- Step 1: Dilute -->
+          <div class="how-works__card">
+            <div class="how-works__card-illust">
+              <img src="images/Images/Illustrations/SVG/illustration-step-dilute.svg" alt="Diluting VISK Kavach concentrate" loading="lazy">
+            </div>
+            <div class="how-works__card-head">
+              <span class="how-works__card-num">01</span>
+              <h3>Dilute</h3>
+            </div>
+            <p class="how-works__card-body">Mix VISK Kavach concentrate with water at the recommended ratio for your application. Concentrations range from water line dosing to surface spray.</p>
+            <span class="how-works__card-fact">2–50 ppm depending on application</span>
+          </div>
+
+          <!-- Step 2: Apply -->
+          <div class="how-works__card">
+            <div class="how-works__card-illust">
+              <img src="images/Images/Illustrations/SVG/steps-2-apply.svg" alt="Applying VISK through farm systems" loading="lazy">
+            </div>
+            <div class="how-works__card-head">
+              <span class="how-works__card-num">02</span>
+              <h3>Apply</h3>
+            </div>
+            <p class="how-works__card-body">Use through your existing water lines, spray systems, fogging units, or as a surface wipe. No special equipment required.</p>
+            <span class="how-works__card-fact">Drip · Spray · Fog · Dip</span>
+          </div>
+
+          <!-- Step 3: Done -->
+          <div class="how-works__card">
+            <div class="how-works__card-illust">
+              <img src="images/Images/Illustrations/illustration-step-done.png" alt="Clean produce ready for harvest" loading="lazy">
+            </div>
+            <div class="how-works__card-head">
+              <span class="how-works__card-num">03</span>
+              <h3>Done</h3>
+            </div>
+            <p class="how-works__card-body">No rinse required. VISK breaks down into simple saline — your farm stays clean with zero chemical residue on produce or surfaces.</p>
+            <span class="how-works__card-fact">Breaks down into salt water</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: HOW-IT-WORKS END -->
+
+
+    <!-- COMPONENT: TRUST START -->
+    <section class="trust" id="trust" aria-labelledby="trust-title">
+      <div class="container">
+        <div class="trust__grid">
+          <div class="trust__heading">
+            <p class="eyebrow">Why farms can trust it</p>
+            <h3 id="trust-title">Science you can check. Standards you can verify.</h3>
+          </div>
+
+          <div class="trust__items">
+            <div class="trust__item">
+              <div class="trust__item-icon">
+                <img src="images/Icons/SVG/icon-map-pin-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+              </div>
+              <h4>Made in India</h4>
+              <p>Manufactured by Tristar Pharmaceuticals, Panchkula, Haryana</p>
+            </div>
+            <div class="trust__item">
+              <div class="trust__item-icon">
+                <img src="images/Icons/SVG/icon-badge-check-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+              </div>
+              <h4>FSSAI Licensed</h4>
+              <p>Food-grade certification for produce contact applications</p>
+            </div>
+            <div class="trust__item">
+              <div class="trust__item-icon">
+                <img src="images/Icons/SVG/icon-microbe-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+              </div>
+              <h4>WHO / FDA / EPA Recognized</h4>
+              <p>HOCl recognized as effective sanitizer by global health bodies</p>
+            </div>
+            <div class="trust__item">
+              <div class="trust__item-icon">
+                <img src="images/Icons/SVG/icon-droplet-check-teal.svg" alt="" width="24" height="24" aria-hidden="true">
+              </div>
+              <h4>Zero Chemical Residue</h4>
+              <p>Biodegrades to saline — no accumulation in soil, water, or produce</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust__note">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3M8 10v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <p>VISK Kavach is a sanitation and hygiene input. It is not registered as a pesticide, fungicide, or crop protection product. Regulatory claims apply to HOCl as a sanitizer class, not to specific agricultural outcomes.</p>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: TRUST END -->
+
+
+    <!-- COMPONENT: VOICES START — HIDDEN: Will enable once real testimonials are available -->
+    <section class="voices" id="voices" aria-labelledby="voices-title" style="display:none;">
+      <div class="container">
+        <div class="voices__header">
+          <div class="section-header">
+            <p class="eyebrow">Voices from the Farm</p>
+            <h2 id="voices-title">What farmers are saying.</h2>
+          </div>
+          <a href="#applications" class="voices__header-link">
+            Find a Plan for Your Farm
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="voices__grid">
+          <!-- Quote card (mist bg) -->
+          <div class="voice-card--quote">
+            <p class="voice-card__quote">"We switched our entire polyhouse water line to VISK. The difference in plant health was visible within the first cycle. No more harsh chemicals near our produce."</p>
+            <div class="voice-card__author">
+              <div class="voice-card__avatar">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3C7 9 5 12 5 16a7 7 0 0014 0c0-4-2-7-7-13z" fill="currentColor" opacity="0.2"/><path d="M12 3C7 9 5 12 5 16a7 7 0 0014 0c0-4-2-7-7-13z" stroke="currentColor" stroke-width="1.2"/></svg>
+              </div>
+              <div class="voice-card__author-info">
+                <span class="voice-card__name">Hydroponic Grower</span>
+                <span class="voice-card__role">Protected cultivation, Maharashtra</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video card -->
+          <div class="voice-card--video">
+            <div class="voice-card__video-thumb">
+              <img src="images/Images/Other/testimonial-polyhouse-grower.png" alt="A grower discusses VISK in their polyhouse" loading="lazy">
+              <div class="voice-card__play">
+                <div class="voice-card__play-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="voice-card__video-body">
+              <span class="voice-card__video-tag">Protected cultivation</span>
+              <span class="voice-card__video-title">A Grower's Point of View</span>
+              <a href="#" class="voice-card__transcript-link">Read transcript</a>
+            </div>
+          </div>
+
+          <!-- Image + quote card -->
+          <div class="voice-card--image">
+            <img src="images/Images/Other/testimonial-poultry-manager.png" alt="Poultry house using VISK for water line sanitation" class="voice-card__photo" loading="lazy">
+            <div class="voice-card__image-body">
+              <p class="voice-card__quote">"Water quality is everything in poultry. VISK helps us maintain sanitary drinking lines without introducing chemicals that stress our birds."</p>
+              <div class="voice-card__author">
+                <div class="voice-card__author-info">
+                  <span class="voice-card__name">Poultry Farm Manager</span>
+                  <span class="voice-card__role">Broiler operation, Gujarat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: VOICES END -->
+
+
+    <!-- COMPONENT: ORDER-CTA START -->
+    <section class="order-cta" id="order" aria-labelledby="order-title">
+      <!-- Decorative ripple background -->
+      <div class="order-cta__ripple" aria-hidden="true">
+        <img src="images/Images/Backgrounds/SVG/background-ripple-field.svg" alt="" loading="lazy">
+      </div>
+
+      <div class="container">
+        <div class="order-cta__grid">
+          <!-- Left: headline + CTA -->
+          <div class="order-cta__content">
+            <span class="order-cta__eyebrow">— GET VISK</span>
+            <h2 id="order-title">Ready to Clean Up Your Farm?</h2>
+            <p>Talk to our team. We'll build your farm's sanitation plan, free.</p>
+            <div class="order-cta__buttons">
+              <a href="https://wa.me/917743027145?text=Hi%2C%20I%27d%20like%20to%20order%20VISK%20Kavach%20for%20my%20farm" class="btn btn--inverse" target="_blank" rel="noopener">
+                <svg class="btn__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path d="M10 0C4.5 0 0 4.5 0 10C0 11.8 0.5 13.5 1.4 15L0 20L5.2 18.6C6.6 19.4 8.3 19.9 10 19.9C15.5 19.9 20 15.4 20 9.9C20 7.3 19 4.8 17.1 2.9C15.2 1 12.7 0 10 0ZM10 18.2C8.5 18.2 7 17.8 5.7 17L5.4 16.8L2.3 17.6L3.1 14.6L2.9 14.3C1.9 12.9 1.4 11.5 1.4 10C1.4 5.3 5.3 1.4 10 1.4C12.3 1.4 14.4 2.3 16 3.9C17.6 5.5 18.6 7.6 18.6 10C18.6 14.7 14.7 18.2 10 18.2ZM14.6 12.1C14.4 12 13.1 11.4 12.9 11.3C12.7 11.2 12.5 11.2 12.4 11.4C12.2 11.6 11.8 12.1 11.6 12.3C11.5 12.5 11.3 12.5 11.1 12.4C10.9 12.3 10 12 9 11.1C8.2 10.4 7.6 9.5 7.5 9.3C7.3 9.1 7.5 9 7.6 8.9C7.7 8.8 7.8 8.6 7.9 8.5C8 8.4 8.1 8.3 8.1 8.1C8.2 7.9 8.1 7.8 8.1 7.7C8 7.6 7.5 6.3 7.3 5.9C7.1 5.5 7 5.5 6.8 5.5H6.3C6.1 5.5 5.8 5.6 5.6 5.8C5.4 6 4.7 6.6 4.7 7.9C4.7 9.2 5.6 10.4 5.7 10.6C5.8 10.8 7.5 13.3 10.1 14.4C12.7 15.5 12.7 15.1 13.2 15.1C13.7 15 14.8 14.4 15 13.9C15.2 13.3 15.2 12.8 15.1 12.7C15 12.3 14.8 12.2 14.6 12.1Z"/>
+                </svg>
+                Chat on WhatsApp
+              </a>
+              <a href="tel:+917743027145" class="btn order-cta__outline">
+                <svg class="btn__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M2 3a2 2 0 012-2h2.28a1 1 0 01.95.68l1.07 3.21a1 1 0 01-.27 1.02L6.57 7.37a12.06 12.06 0 006.06 6.06l1.46-1.46a1 1 0 011.02-.27l3.21 1.07a1 1 0 01.68.95V16a2 2 0 01-2 2h-1C8.72 18 2 11.28 2 3z"/>
+                </svg>
+                Call Us
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Enquiry form -->
+          <div class="order-cta__form-card">
+            <form class="order-form order-form--collapsed" id="enquiry-form" novalidate>
+              <div class="order-form__header">
+                <h3 class="order-form__title">Order or enquire</h3>
+                <p class="order-form__subtitle">Share a few details and our team will contact you on WhatsApp or by phone.</p>
+              </div>
+
+              <!-- Mobile peek overlay — tap to expand -->
+              <div class="order-form__peek-trigger" aria-hidden="true">
+                <span class="order-form__peek-label">Fill enquiry form <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2.5v9M3.5 8L7 11.5 10.5 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+
+              <div class="order-form__row">
+                <div class="form-field">
+                  <label class="form-field__label" for="form-name">Full name</label>
+                  <input class="form-field__input" type="text" id="form-name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="form-phone">WhatsApp or phone number</label>
+                  <input class="form-field__input" type="tel" id="form-phone" name="phone" placeholder="+91" required>
+                </div>
+              </div>
+
+              <div class="order-form__row">
+                <div class="form-field">
+                  <label class="form-field__label" for="form-farm-type">Farm type</label>
+                  <select class="form-field__select" id="form-farm-type" name="farm_type" required>
+                    <option value="" disabled selected>Select farm type</option>
+                    <option value="crop">Crop &amp; protected cultivation</option>
+                    <option value="aquaculture">Fish &amp; shrimp farming</option>
+                    <option value="poultry">Poultry &amp; biosecurity</option>
+                    <option value="postharvest">Harvest &amp; pack-house</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label class="form-field__label" for="form-location">Location</label>
+                  <input class="form-field__input" type="text" id="form-location" name="location" placeholder="District, state">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-field__label">Pack size you are interested in</label>
+                <div class="form-field__pills">
+                  <label class="form-field__pill"><input type="radio" name="pack_size" value="1L"> 1 L</label>
+                  <label class="form-field__pill"><input type="radio" name="pack_size" value="5L"> 5 L</label>
+                  <label class="form-field__pill"><input type="radio" name="pack_size" value="unsure" checked> Not sure yet</label>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-field__label" for="form-ppm">PPM concentration</label>
+                <select class="form-field__select" id="form-ppm" name="ppm">
+                  <option value="" disabled selected>Select PPM</option>
+                  <option value="50">50 PPM</option>
+                  <option value="100">100 PPM</option>
+                  <option value="200">200 PPM</option>
+                  <option value="500">500 PPM</option>
+                  <option value="unsure">Not sure — help me decide</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label class="form-field__label" for="form-message">What would you like help with? (optional)</label>
+                <textarea class="form-field__textarea" id="form-message" name="message" rows="3" placeholder="For example, drip lines clogging in a 2 acre polyhouse"></textarea>
+              </div>
+
+              <div class="form-consent">
+                <input type="checkbox" id="form-consent" name="consent" required checked>
+                <label for="form-consent">I agree to be contacted by the VISK team on WhatsApp or phone.</label>
+              </div>
+
+              <button type="submit" class="btn btn--accent order-form__submit">
+                SEND ENQUIRY
+              </button>
+
+              <p class="order-form__footer-note">Opens WhatsApp with your details filled in. Prefer a call? <a href="tel:+917743027145">Call Us.</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- COMPONENT: ORDER-CTA END -->
+
+  </main>
+
+
+  <!-- COMPONENT: FOOTER START -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a href="/" class="site-footer__logo" aria-label="VISK — Home">
+            <img src="images/Icons/SVG/logo-visk-reversed-label.svg" alt="VISK" width="120" height="36">
+          </a>
+          <p class="site-footer__tagline">Farm Sanitation &amp; Hygiene Input. Food-grade HOCl for modern Indian farms.</p>
+          <div class="site-footer__social">
+            <a href="https://www.instagram.com/viskcare?rpxt=YnpycnNoNzVtdDdk" class="site-footer__social-link" target="_blank" rel="noopener" aria-label="VISK on Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="mailto:sunali@visk.in" class="site-footer__social-link" aria-label="Email VISK">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+            </a>
+            <a href="https://wa.me/917743027145" class="site-footer__social-link" target="_blank" rel="noopener" aria-label="WhatsApp VISK">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.7 5.8L0 24l6.3-1.7C8 23.4 10 24 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0zm5.4 17c-.2.6-1.2 1.2-1.7 1.3-.5.1-1 .1-1.7-.2-.4-.1-1-.4-1.7-.8-3-1.5-5-4.6-5.1-4.8-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2.1 1-2.4.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.8 2 .9 2.1.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.2.7.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.8-.1 1.4z"/></svg>
+            </a>
+          </div>
+          <p class="site-footer__email"><a href="mailto:sunali@visk.in">sunali@visk.in</a></p>
+        </div>
+
+        <div class="site-footer__nav-group">
+          <span class="site-footer__nav-title">Farm Types</span>
+          <a href="hocl-hydroponic-farming.html" class="site-footer__nav-link">Hydroponics</a>
+          <a href="hocl-greenhouse-farming.html" class="site-footer__nav-link">Polyhouses</a>
+          <a href="hocl-fish-shrimp-farming.html" class="site-footer__nav-link">Fish &amp; Shrimp Farming</a>
+          <a href="hocl-hydroponic-farming.html" class="site-footer__nav-link">Aeroponics</a>
+          <a href="hocl-aquaponic-farming.html" class="site-footer__nav-link">Aquaponics</a>
+          <a href="hocl-poultry-farming.html" class="site-footer__nav-link">Poultry</a>
+          <a href="applications.html" class="site-footer__nav-link">Dairy</a>
+        </div>
+
+        <div class="site-footer__nav-group">
+          <span class="site-footer__nav-title">Produce Types</span>
+          <a href="hocl-tomato-farming.html" class="site-footer__nav-link">Tomato</a>
+          <a href="hocl-strawberry-farming.html" class="site-footer__nav-link">Strawberry</a>
+          <a href="hocl-grape-farming.html" class="site-footer__nav-link">Grape</a>
+          <a href="hocl-leafy-greens-farming.html" class="site-footer__nav-link">Leafy Greens</a>
+          <a href="hocl-capsicum-farming.html" class="site-footer__nav-link">Cucumber</a>
+          <a href="hocl-capsicum-farming.html" class="site-footer__nav-link">Capsicum</a>
+        </div>
+
+        <div class="site-footer__nav-group">
+          <span class="site-footer__nav-title">Concerns</span>
+          <a href="hocl-water-irrigation-treatment.html" class="site-footer__nav-link">Water &amp; Irrigation</a>
+          <a href="hocl-post-harvest-food-safety.html" class="site-footer__nav-link">Post-Harvest &amp; Food Safety</a>
+          <a href="hocl-farm-biosecurity.html" class="site-footer__nav-link">Biosecurity</a>
+          <a href="hocl-pathogen-guide.html" class="site-footer__nav-link">Pathogen Guide</a>
+          <a href="hocl-roots-revival.html" class="site-footer__nav-link">Hydroponics Roots</a>
+          <a href="hocl-equipment-sanitation.html" class="site-footer__nav-link">Equipment Sanitation</a>
+        </div>
+
+        <div class="site-footer__nav-group">
+          <span class="site-footer__nav-title">Learn</span>
+          <a href="science.html" class="site-footer__nav-link">The Science Behind HOCl</a>
+          <a href="science.html#faqs" class="site-footer__nav-link">HOCl FAQs</a>
+          <a href="science.html#research" class="site-footer__nav-link">Research &amp; References</a>
+          <a href="how-to-use.html" class="site-footer__nav-link">How to Use VISK</a>
+          <a href="about.html" class="site-footer__nav-link">About VISK</a>
+          <a href="#order" class="site-footer__nav-link">Send Enquiry</a>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__legal"><a href="legal.html">Legal</a> &nbsp;·&nbsp; &copy; 2026 VISK Kavach. All rights reserved. Marketed by Beon Des Tech Systems Pvt. Ltd.</p>
+        <p class="site-footer__disclaimer">VISK Kavach is a farm sanitation and hygiene input based on Hypochlorous Acid (HOCl). It is not a pesticide, fungicide, or crop-protection product. Always follow the application-specific usage guide. Manufactured by Tristar Pharmaceuticals Pvt. Ltd., Panchkula, Haryana.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- COMPONENT: FOOTER END -->
+
+  <!-- Scripts -->
+  <script src="js/global.js"></script>
 </body>
 </html>

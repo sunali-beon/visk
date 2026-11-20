@@ -1,0 +1,28 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="128" height="76.8" viewBox="0 0 128 76.8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Illustration">
+<path id="Vector" d="M40 24H25.6C22.0654 24 19.2 26.8654 19.2 30.4V60.8C19.2 64.3346 22.0654 67.2 25.6 67.2H40C43.5346 67.2 46.4 64.3346 46.4 60.8V30.4C46.4 26.8654 43.5346 24 40 24Z" fill="white" stroke="#0B2C3D" stroke-width="2.4"/>
+<path id="Vector_2" opacity="0.85" d="M40 41.6H25.6C23.3909 41.6 21.6 43.3909 21.6 45.6V60.8C21.6 63.0091 23.3909 64.8 25.6 64.8H40C42.2091 64.8 44 63.0091 44 60.8V45.6C44 43.3909 42.2091 41.6 40 41.6Z" fill="#147D90"/>
+<path id="Vector_3" d="M25.6 24V16H40L48 22.4H57.6" stroke="#0B2C3D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="Vector_4">
+<path d="M35.2 16L32 27.2Z" fill="#0B2C3D"/>
+<path d="M35.2 16L32 27.2" stroke="#0B2C3D" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<g id="Vector_5">
+<path d="M62.4 22.4L112 6.4ZM62.4 22.4H116.8ZM62.4 22.4L112 38.4Z" fill="#0B2C3D"/>
+<path d="M112 38.4L62.4 22.4L112 6.4M62.4 22.4H116.8" stroke="#47AEC0" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="1.6 4.8"/>
+</g>
+<path id="Vector_6" d="M94.4 18C95.5046 18 96.4 17.1046 96.4 16C96.4 14.8954 95.5046 14 94.4 14C93.2954 14 92.4 14.8954 92.4 16C92.4 17.1046 93.2954 18 94.4 18Z" fill="#47AEC0"/>
+<path id="Vector_7" d="M102.4 29.2C103.505 29.2 104.4 28.3046 104.4 27.2C104.4 26.0954 103.505 25.2 102.4 25.2C101.295 25.2 100.4 26.0954 100.4 27.2C100.4 28.3046 101.295 29.2 102.4 29.2Z" fill="#47AEC0"/>
+<path id="Vector_8" d="M84.8 27.2C85.6837 27.2 86.4 26.4837 86.4 25.6C86.4 24.7163 85.6837 24 84.8 24C83.9163 24 83.2 24.7163 83.2 25.6C83.2 26.4837 83.9163 27.2 84.8 27.2Z" fill="#47AEC0"/>
+<path id="Vector_9" d="M108.8 14.4C109.684 14.4 110.4 13.6837 110.4 12.8C110.4 11.9163 109.684 11.2 108.8 11.2C107.916 11.2 107.2 11.9163 107.2 12.8C107.2 13.6837 107.916 14.4 108.8 14.4Z" fill="#47AEC0"/>
+<g id="Vector_10">
+<path d="M76.8 67.2H121.6Z" fill="#0B2C3D"/>
+<path d="M76.8 67.2H121.6" stroke="#0B2C3D" stroke-opacity="0.3" stroke-width="1.6"/>
+</g>
+<path id="Vector_11" d="M111.2 49.6H88.8C87.4745 49.6 86.4 50.6745 86.4 52V64.8C86.4 66.1255 87.4745 67.2 88.8 67.2H111.2C112.525 67.2 113.6 66.1255 113.6 64.8V52C113.6 50.6745 112.525 49.6 111.2 49.6Z" fill="#EFE7D6" stroke="#0B2C3D" stroke-width="2"/>
+<g id="Vector_12">
+<path d="M89.6 57.6H110.4Z" fill="#0B2C3D"/>
+<path d="M89.6 57.6H110.4" stroke="#0B2C3D" stroke-width="1.6"/>
+</g>
+</g>
+</svg>
